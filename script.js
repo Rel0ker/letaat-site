@@ -3,10 +3,51 @@ document.addEventListener('DOMContentLoaded', () => {
   let current = 0;
   let isThrottled = false;
 
-  // Индикаторы (точки) — вертикально справа, по центру
+  // Проверяем, что мы на ПК (ширина экрана больше 768px)
+  const isDesktop = window.innerWidth > 768;
+  
+  // Если мы на мобильном, не инициализируем слайды
+  if (!isDesktop) {
+    // Показываем все секции на мобильных
+    reveals.forEach(el => {
+      el.classList.remove('hidden');
+      el.classList.add('flex');
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.background = 'transparent';
+      el.style.transition = 'none';
+    });
+    
+    // Показываем все анимированные элементы
+    const floatingCards = document.querySelectorAll('.floating-card');
+    const featureItems = document.querySelectorAll('.feature-item');
+    
+    floatingCards.forEach(card => {
+      card.classList.add('animate-in');
+    });
+    
+    featureItems.forEach(item => {
+      item.classList.add('animate-in');
+    });
+    
+    return; // Выходим из функции
+  }
+
+  // Индикаторы (точки) — только для десктопа
   const dots = document.createElement('div');
-  dots.className = 'fixed top-1/2 right-6 -translate-y-1/2 flex flex-col gap-3 z-50';
-  dots.innerHTML = reveals.map((_, i) => `<span class="dot w-4 h-4 rounded-full bg-white/40 border-2 border-white transition-all duration-300 block cursor-pointer"></span>`).join('');
+  dots.className = 'dots-container';
+  dots.style.cssText = `
+    position: fixed;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 50;
+  `;
+  
+  dots.innerHTML = reveals.map((_, i) => `<span class="dot"></span>`).join('');
   document.body.appendChild(dots);
   const dotEls = Array.from(dots.querySelectorAll('.dot'));
 
@@ -98,15 +139,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
     dotEls.forEach((dot, i) => {
-      dot.classList.toggle('bg-white', i === idx);
-      dot.classList.toggle('bg-white/40', i !== idx);
-      dot.classList.toggle('scale-125', i === idx);
+      if (i === idx) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
     });
   }
 
-  // Смена слайдов при прокрутке колесом мыши (без порога)
+  // Смена слайдов при прокрутке колесом мыши (только на десктопе)
   window.addEventListener('wheel', (e) => {
-    if (isThrottled) return;
+    if (isThrottled || !isDesktop) return;
     if (e.deltaY > 0) {
       current = (current + 1) % reveals.length;
       showSlide(current);
@@ -118,15 +161,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => isThrottled = false, 1400);
   }, { passive: false });
 
-  // Смена слайдов свайпом на мобильных (порог 40px)
+  // Смена слайдов свайпом на мобильных (только на десктопе)
   let touchStartY = null;
   window.addEventListener('touchstart', (e) => {
+    if (!isDesktop) return;
     if (e.touches.length === 1) {
       touchStartY = e.touches[0].clientY;
     }
   });
   window.addEventListener('touchend', (e) => {
-    if (touchStartY === null) return;
+    if (!isDesktop || touchStartY === null) return;
     const touchEndY = e.changedTouches[0].clientY;
     const diffY = touchStartY - touchEndY;
     if (Math.abs(diffY) > 40) {
