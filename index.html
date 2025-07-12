@@ -516,6 +516,29 @@
     .slide-content {
       padding-bottom: 3rem !important;
     }
+
+    .mouse-glow {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      pointer-events: none;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,197,94,0.10) 0%, rgba(6,182,212,0.06) 60%, transparent 100%);
+      filter: blur(10px);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 2;
+    }
+    .mouse-glow.active {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .floating-card, .feature-item {
+      position: relative;
+    }
   </style>
 </head>
 <body class="min-h-screen font-sans">
@@ -583,6 +606,7 @@
               <p class="text-white/80">VPN не обязателен</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -597,6 +621,7 @@
               <p class="text-white/80">Никаких сложных установок</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -611,6 +636,7 @@
               <p class="text-white/80">Понятно и доступно</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -625,6 +651,7 @@
               <p class="text-white/80">2–4 часа в день</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
       </div>
     </div>
@@ -655,6 +682,7 @@
               <p class="text-white/80">Что это, как работают, где применяются</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -669,6 +697,7 @@
               <p class="text-white/80">Как формулировать запросы для нужного результата</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -683,6 +712,7 @@
               <p class="text-white/80">Тексты, визуал, анализ данных</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -697,6 +727,7 @@
               <p class="text-white/80">Как не «залипать», а использовать с пользой</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -711,6 +742,7 @@
               <p class="text-white/80">Не только теория, но и практика</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -725,6 +757,7 @@
               <p class="text-white/80">Сможете сразу использовать полученные знания</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
       </div>
     </div>
@@ -755,6 +788,7 @@
               <p class="text-white/80">Пишем промпты для ChatGPT и других ИИ</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -769,6 +803,7 @@
               <p class="text-white/80">Midjourney, DALL-E и аналоги</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -783,6 +818,7 @@
               <p class="text-white/80">Письма, резюме, идеи для проектов</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
         
         <div class="feature-item">
@@ -797,6 +833,7 @@
               <p class="text-white/80">Попробуете всё на практике</p>
             </div>
           </div>
+          <div class="mouse-glow"></div>
         </div>
       </div>
     </div>

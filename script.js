@@ -185,6 +185,26 @@ document.addEventListener('DOMContentLoaded', () => {
     touchStartY = null;
   });
 
+  // Mouse glow effect для .floating-card и .feature-item (только на десктопе)
+  if (window.innerWidth > 768) {
+    const glowBlocks = document.querySelectorAll('.floating-card, .feature-item');
+    glowBlocks.forEach(block => {
+      const glow = block.querySelector('.mouse-glow');
+      if (!glow) return;
+      block.addEventListener('mousemove', e => {
+        const rect = block.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        glow.style.left = x + 'px';
+        glow.style.top = y + 'px';
+        glow.classList.add('active');
+      });
+      block.addEventListener('mouseleave', () => {
+        glow.classList.remove('active');
+      });
+    });
+  }
+
   // Изначально показываем только первый блок
   reveals.forEach((el, i) => {
     if (i !== 0) el.classList.add('hidden');
