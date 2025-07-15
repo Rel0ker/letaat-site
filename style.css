@@ -338,7 +338,7 @@ body, #slide-bg-fade, .reveal {
   background: rgba(0,0,0,0.8);
   border-radius: 1rem;
   padding: 1.5rem;
-  border: none;
+  border: 1px solid rgba(255,255,255,0.1);
   transition: all 0.4s ease;
   backdrop-filter: blur(10px);
   position: relative;
@@ -387,7 +387,7 @@ body, #slide-bg-fade, .reveal {
 }
 .feature-content {
   display: flex;
-  align-items: flex-start;
+  align-items: tart;
   gap: 1rem;
 }
 .feature-text {
@@ -447,7 +447,7 @@ body, #slide-bg-fade, .reveal {
   border-radius: 1rem;
   margin-bottom: 1rem;
   overflow: hidden;
-  border: none;
+  border: 1px solid rgba(255,255,255,0.1);
   transition: box-shadow 0.3s, background 0.3s;
 }
 .accordion-header {
@@ -456,13 +456,13 @@ body, #slide-bg-fade, .reveal {
   border: none;
   outline: none;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   text-align: left;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.2rem;
   cursor: pointer;
   transition: background 0.2s;
   gap: 1rem;
@@ -486,10 +486,12 @@ body, #slide-bg-fade, .reveal {
   transition: max-height 0.35s cubic-bezier(.4,0,.2,1), padding 0.3s;
   padding: 0 1.5rem;
   border: none;
+
 }
 .accordion-item.open .accordion-body {
-  padding: 0.5rem 1.5rem 1.2rem 1.5rem;
-  max-height: 400px;
+  padding: 0 1.5rem 1.9rem 1.5rem;
+
+  padding-bottom: 10px;
 }
 .accordion-content {
   color: #fff;

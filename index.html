@@ -339,14 +339,14 @@
   
   <!-- СОВРЕМЕННЫЙ АККОРДЕОН: ВСЕ ПУНКТЫ -->
   <section class="reveal slide-bg-soft w-full flex flex-col px-4 py-8">
-    <div class="slide-content flex flex-col items-center gap-8 max-w-5xl w-full text-center">
+    <div class="slide-content flex flex-col items-center my-auto max-w-5xl w-full text-center">
       <div class="icon-bg-hero mx-auto ">
         <span class="material-icons">menu_book</span>
       </div>
       <h2 class="text-3xl md:text-5xl font-bold text-white mb-2 text-center">
         Разделы <span class="gradient-text">гайда</span>
       </h2>
-      <div class="accordion accordion-grid w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="accordion accordion-grid w-full grid grid-cols-1 md:grid-cols-2 mt-4 gap-4 ">
         <div class="accordion-item">
           <button class="accordion-header">
             <span class="icon-glow"><span class="material-icons">psychology</span></span>
@@ -515,14 +515,48 @@
   
   <!-- О спикере -->
   <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col px-4 py-8">
-    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full text-center">
-      <div class="floating-card text-center items-center">
-        <div class="icon-bg-hero mx-auto "><span class="material-icons">person</span></div>
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center">
-           <span class="gradient-text">О спикере</span>
+    <div class="slide-content flex flex-col md:flex-row items-center gap-8 max-w-4xl w-full mx-auto my-auto">
+      <!-- Левая часть: Фото -->
+      <div class="flex-shrink-0 flex justify-center w-full md:w-[320px] md:self-end md:mt-8">
+        <img src="me.jpg" alt="Полина Трейден" class="w-[220px] md:w-[300px] rounded-2xl object-cover shadow-lg border border-green-400" />
+      </div>
+      <!-- Правая часть: Контент -->
+      <div class="flex flex-col items-center md:items-start text-center md:text-left gap-4 w-full">
+        
+        <h2 class="text-2xl md:text-4xl font-bold text-white bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
+          Привет! Я — Полина Трейден
         </h2>
-        <p class="text-xl text-white/90 mb-4 text-center">Я — Полина Трейден, эксперт по цифровым инструментам и популяризатор ИИ.</p>
-        <p class="text-white/80 text-center">Веду образовательные программы по ИИ и цифровой грамотности. Помогаю людям внедрять технологии в жизнь легко и с удовольствием.</p>
+        <div class="text-base text-white/80">22 года. Эксперт по нейросетям и делегированию задач ИИ.</div>
+        <p class="text-lg text-white/90">
+          Помогаю предпринимателям, управленцам и специалистам внедрять ИИ в свою работу без перегруза и страха.
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-white">
+  <li class="border border-green-400 rounded-lg py-4 px-3 col-span-1 sm:col-span-2 flex items-center gap-3">
+    Старший специалист Яндекс Практикума по образовательной поддержке бэкенда
+  </li>
+  <li class="border border-green-400 rounded-lg py-4 px-3 flex items-center gap-3">
+    Преподаватель и методист
+  </li>
+  <li class="border border-green-400 rounded-lg py-4 px-3 flex items-center gap-3">
+    Автор курса «ИИ в помощь человеку»
+  </li>
+  <li class="border border-green-400 rounded-lg py-4 px-3 flex items-center gap-3">
+    Переводчик Гарвардского курса CS50
+  </li>
+  <li class="border border-green-400 rounded-lg py-4 px-3 flex items-center gap-3">
+    Веду Telegram-канал об ИИ, продуктивности и жизни —
+    <a href="https://t.me/letaaTreiden" target="_blank" class="text-green-400 underline">@letaaTreiden</a>
+  </li>
+</ul>
+        <div class="bg-gradient-to-r from-green-500/20 to-cyan-500/10 rounded-xl p-4 mt-2 shadow-md w-full">
+          <div class="text-lg font-semibold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-1">
+            Моя миссия:
+          </div>
+          <div class="text-white/90 text-base leading-relaxed">
+            Показать, что ИИ — это не страшно, не сложно и не «только для айтишников».<br>
+            Это помощник, который освобождает время и делает твою жизнь легче.
+          </div>
+        </div>
       </div>
     </div>
   </section>
