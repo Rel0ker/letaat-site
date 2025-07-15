@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const reveals = Array.from(document.querySelectorAll('.reveal'));
   let current = 0;
   let isThrottled = false;
+  let lastSlide = 0;
 
   // Проверяем, что мы на ПК (ширина экрана больше 768px)
   const isDesktop = window.innerWidth > 768;
@@ -30,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
       item.classList.add('animate-in');
     });
     
+    // Удаляем dots, showSlide и логику слайдов
+    const dots = document.querySelector('.dots-container');
+    if (dots) dots.remove();
+    window.showSlide = undefined;
     return; // Выходим из функции
   }
 
@@ -67,77 +72,62 @@ document.addEventListener('DOMContentLoaded', () => {
   const bgFade = document.getElementById('slide-bg-fade');
 
   function showSlide(idx) {
+    const direction = idx > lastSlide ? 1 : -1;
     reveals.forEach((el, i) => {
-      const floatingCard = el.querySelector('.floating-card');
-      const featureItems = el.querySelectorAll('.feature-item');
-      
       if (i === idx) {
         el.classList.remove('hidden');
         el.classList.add('flex');
-        el.style.transition = 'none';
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(40px) scale(0.98)';
-        // Делаем фон прозрачным
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.transition = '';
         el.style.background = 'transparent';
-        // Меняем фон у bgFade
-        const bgClass = Array.from(el.classList).find(cls => bgMap[cls]);
-        if (bgClass && bgFade) {
-          bgFade.style.background = bgMap[bgClass];
-        }
-        
-        // Анимация для floating-card
-        if (floatingCard) {
-          floatingCard.classList.remove('animate-in');
-          setTimeout(() => {
-            floatingCard.classList.add('animate-in');
-          }, 300);
-        }
-        
-        // Анимация для feature-items с задержкой
-        featureItems.forEach((item, index) => {
-          item.classList.remove('animate-in');
-          setTimeout(() => {
-            item.classList.add('animate-in');
-          }, 500 + index * 150);
-        });
-        
-        setTimeout(() => {
-          el.style.transition = 'opacity 1.0s cubic-bezier(.4,0,.2,1), transform 1.0s cubic-bezier(.4,0,.2,1)';
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0) scale(1)';
-        }, 20);
+        el.style.display = 'flex';
       } else {
-        if (!el.classList.contains('hidden')) {
-          el.style.transition = 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)';
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(-40px) scale(0.98)';
-          el.style.background = 'transparent';
-          
-          // Убираем анимации
-          if (floatingCard) floatingCard.classList.remove('animate-in');
-          featureItems.forEach(item => item.classList.remove('animate-in'));
-          
-          setTimeout(() => {
-            el.classList.add('hidden');
-            el.classList.remove('flex');
-            el.style.opacity = '';
-            el.style.transform = '';
-            el.style.transition = '';
-          }, 700);
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+        el.style.opacity = '';
+        el.style.transform = '';
+        el.style.transition = '';
+        el.style.background = 'transparent';
+        el.style.display = '';
+      }
+      // Анимация главной иконки
+      const heroIcon = el.querySelector('.icon-bg-hero');
+      if (heroIcon) {
+        if (i === idx) {
+          heroIcon.classList.add('animate-in');
         } else {
-          el.classList.add('hidden');
-          el.classList.remove('flex');
-          el.style.opacity = '';
-          el.style.transform = '';
-          el.style.transition = '';
-          el.style.background = 'transparent';
-          
-          // Убираем анимации
-          if (floatingCard) floatingCard.classList.remove('animate-in');
-          featureItems.forEach(item => item.classList.remove('animate-in'));
+          heroIcon.classList.remove('animate-in');
         }
       }
     });
+
+    const newEl = reveals[idx];
+    const oldEl = reveals[lastSlide];
+
+    if (newEl !== oldEl) {
+      newEl.style.transition = 'none';
+      newEl.style.opacity = '0';
+      newEl.style.transform = `translateY(${direction * 40}px) scale(0.98)`;
+      setTimeout(() => {
+        newEl.style.transition = 'opacity 1.0s cubic-bezier(.4,0,.2,1), transform 1.0s cubic-bezier(.4,0,.2,1)';
+        newEl.style.opacity = '1';
+        newEl.style.transform = 'translateY(0) scale(1)';
+      }, 20);
+
+      oldEl.style.transition = 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)';
+      oldEl.style.opacity = '0';
+      oldEl.style.transform = `translateY(${-direction * 40}px) scale(0.98)`;
+      setTimeout(() => {
+        oldEl.classList.add('hidden');
+        oldEl.classList.remove('flex');
+        oldEl.style.opacity = '';
+        oldEl.style.transform = '';
+        oldEl.style.transition = '';
+        oldEl.style.display = '';
+      }, 700);
+    }
+    lastSlide = idx;
     dotEls.forEach((dot, i) => {
       if (i === idx) {
         dot.classList.add('active');
@@ -150,11 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Смена слайдов при прокрутке колесом мыши (только на десктопе)
   window.addEventListener('wheel', (e) => {
     if (isThrottled || !isDesktop) return;
-    if (e.deltaY > 0) {
-      current = (current + 1) % reveals.length;
+    if (e.deltaY > 0.75 && current < reveals.length - 1) {
+      current++;
       showSlide(current);
-    } else if (e.deltaY < 0) {
-      current = (current - 1 + reveals.length) % reveals.length;
+    } else if (e.deltaY < -0.75 && current > 0) {
+      current--;
       showSlide(current);
     }
     isThrottled = true;
@@ -214,4 +204,94 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.transition = '';
   });
   showSlide(0);
+
+  // --- Современный аккордеон с анимацией и автоскроллом ---
+  document.querySelectorAll('.accordion').forEach(acc => {
+    acc.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const item = this.closest('.accordion-item');
+        const open = item.classList.contains('open');
+        // Закрыть все
+        acc.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('open');
+          const body = i.querySelector('.accordion-body');
+          if (body) {
+            body.style.maxHeight = null;
+          }
+        });
+        // Открыть только если не был открыт
+        if (!open) {
+          item.classList.add('open');
+          const body = item.querySelector('.accordion-body');
+          if (body) {
+            body.style.maxHeight = body.scrollHeight + 'px';
+          }
+          setTimeout(() => {
+            const headerEl = document.querySelector('header');
+            const headerHeight = headerEl ? headerEl.offsetHeight : 70;
+            const rect = item.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetY = rect.top + scrollTop - headerHeight - 8;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+          }, 350);
+        }
+      });
+    });
+  });
+
+  // Удаляю дублирующийся блок создания dots и updateDots
+  // (Блок ниже удалён)
+  /*
+  const oldSliderRail = document.querySelector('.slider-rail');
+  if (oldSliderRail) oldSliderRail.remove();
+
+  const sliderDotsContainer = document.createElement('div');
+  sliderDotsContainer.className = 'dots-container';
+  sliderDotsContainer.style.cssText = `
+    position: fixed;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 50;
+  `;
+  sliderDotsContainer.innerHTML = reveals.map((_, i) => `<span class="dot"></span>`).join('');
+  document.body.appendChild(sliderDotsContainer);
+  const sliderDotEls = Array.from(sliderDotsContainer.querySelectorAll('.dot'));
+  sliderDotEls.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (current !== i) {
+        current = i;
+        showSlide(current);
+      }
+    });
+  });
+  function updateDots() {
+    sliderDotEls.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+  // Вызов обновления при смене слайда
+  const origShowSlide = showSlide;
+  showSlide = function(idx) {
+    origShowSlide(idx);
+    updateDots();
+  };
+  */
+
+  // Добавляю функцию updateDots и вызываю её внутри showSlide
+  // function updateDots() {
+  //   dotEls.forEach((dot, i) => {
+  //     dot.classList.toggle('active', i === current);
+  //   });
+  // }
+
+  // Модифицирую showSlide, чтобы вызывать updateDots
+  // const origShowSlide = showSlide;
+  // showSlide = function(idx) {
+  //   origShowSlide(idx);
+  //   updateDots();
+  // };
 }); 

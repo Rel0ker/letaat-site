@@ -6,15 +6,174 @@
   <title>ИИ как личный ассистент — мастер-класс</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    // Прокрутка к гайду по клику на кнопку в Hero-блоке
+    document.addEventListener('DOMContentLoaded', function() {
+      const heroBtn = document.getElementById('hero-guide-btn');
+      if (heroBtn) {
+        heroBtn.addEventListener('click', function() {
+          // На мобильных просто прокручиваем к нужной секции
+          if (window.innerWidth <= 768) {
+            const sections = document.querySelectorAll('.reveal');
+            if (sections[2]) {
+              sections[2].scrollIntoView({ behavior: 'smooth' });
+            }
+          } else {
+            // На ПК используем слайды
+            window.current = 2;
+            if (typeof window.showSlide === 'function') window.showSlide(window.current);
+          }
+        });
+      }
+      
+      // Прокрутка к последнему слайду по клику на кнопку в header
+      const btn = document.getElementById('header-signup');
+      if (btn) {
+        btn.addEventListener('click', function() {
+          if (window.innerWidth <= 768) {
+            const sections = document.querySelectorAll('.reveal');
+            if (sections.length > 0) {
+              sections[sections.length - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+          } else {
+            window.current = document.querySelectorAll('.reveal').length - 1;
+            if (typeof window.showSlide === 'function') window.showSlide(window.current);
+          }
+        });
+      }
+    });
+  </script>
+  <script src="script.js"></script>
   <style>
-    html, body {
-      overflow: hidden;
-      overscroll-behavior: none;
-      height: 100%;
-      width: 100%;
+    html, body, .reveal {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    html::-webkit-scrollbar, body::-webkit-scrollbar, .reveal::-webkit-scrollbar {
+      display: none;
+    }
+    /* --- ДОБАВЛЕНО: Центрирование всей страницы --- */
+    body {
+      min-height: 100vh;
+      width: 100vw;
       margin: 0;
       padding: 0;
-      background-color: #0a0a0a;
+    }
+    .reveal {
+      min-height: 100vh !important;
+      height: auto !important;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    /* --- КОНЕЦ ДОБАВЛЕНИЯ --- */
+    /* Главная круглая большая иконка для слайдов */
+    .icon-bg-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 60% 40%, #14532d 0%, #183c2e 60%, #0a2233 100%);
+      box-shadow: 0 8px 32px rgba(6,182,212,0.18), 0 2px 0 rgba(34,197,94,0.12) inset;
+      margin: 0 auto 1.5rem auto;
+
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      /* opacity и transform только для анимации, не по умолчанию */
+      position: relative;
+      overflow: hidden;
+    }
+    .icon-bg-hero.animate-in {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .icon-bg-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.8s;
+      z-index: 1;
+    }
+    .icon-bg-hero:hover::before {
+      left: 100%;
+    }
+    .icon-bg-hero:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 20px rgba(0,0,0,0.2), 0 8px 32px rgba(6,182,212,0.18), 0 2px 0 rgba(34,197,94,0.12) inset;
+      opacity: 1;
+    }
+    .icon-bg-hero .material-icons {
+      font-size: 3.2rem;
+      color: #22c55e;
+      filter: drop-shadow(0 4px 16px #22c55e44);
+      z-index: 2;
+      position: relative;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .icon-bg-hero:hover .material-icons {
+      color: #06b6d4;
+      text-shadow: 0 0 30px rgba(6,182,212,0.6);
+      z-index: 3;
+    }
+    @media (max-width: 768px) {
+      .icon-bg-hero {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+      }
+      .icon-bg-hero .material-icons {
+        font-size: 2rem;
+      }
+    }
+    /* Кастомный вертикальный слайдер */
+    .slider-rail {
+      position: fixed;
+      top: 50%;
+      right: 1.5rem;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 180px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 50;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      padding: 8px 0;
+      gap: 8px;
+    }
+    .slider-dot {
+      width: 10px;
+      height: 18px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.13);
+      transition: background 0.2s, height 0.2s;
+      cursor: pointer;
+    }
+    .slider-dot.active {
+      background: linear-gradient(180deg, #22c55e 60%, #06b6d4 100%);
+      height: 32px;
+      box-shadow: 0 2px 8px #22c55e33;
+    }
+    html, body {
+      overflow: auto !important;
+      height: auto !important;
+    }
+    body, #slide-bg-fade, .reveal {
+      background: #080b10 !important;
+      background-image: none !important;
+    }
+    .reveal {
+      min-height: 100vh !important;
+      height: auto !important;
     }
     
     /* Анимированный фон */
@@ -78,8 +237,6 @@
       border: none;
       padding: 2rem;
       transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateX(-20px);
       position: relative;
       overflow: hidden;
     }
@@ -88,6 +245,8 @@
       border: none;
       box-shadow: none;
       backdrop-filter: none;
+      margin-left: auto;
+      margin-right: auto;
     }
     .floating-card.hero-card::before {
       display: none;
@@ -115,8 +274,8 @@
     .icon-glow {
       background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(6,182,212,0.2));
       border-radius: 50%;
-      width: 80px;
-      height: 80px;
+      width: 56px;
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -215,8 +374,6 @@
       padding: 1.5rem;
       border: none;
       transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateX(-20px);
       backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
@@ -342,6 +499,7 @@
         transform: none !important;
         background: transparent !important;
         position: relative;
+        padding: 2rem 1rem;
       }
       
       /* Скрываем точки на мобильных */
@@ -539,6 +697,149 @@
     .floating-card, .feature-item {
       position: relative;
     }
+
+    /* Современный аккордеон */
+    .accordion-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    @media (min-width: 900px) {
+      .accordion-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .accordion-grid {
+        grid-template-columns: 1fr;
+        margin-bottom: 1rem;
+      }
+    }
+    .accordion-item {
+      background: rgba(0,0,0,0.8) !important;
+      border-radius: 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
+      overflow: hidden;
+      border: none;
+      transition: box-shadow 0.3s, background 0.3s;
+    }
+    .accordion-header {
+      width: 100%;
+      background: none !important;
+      border: none !important;
+      outline: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      gap: 1rem;
+      box-shadow: none !important;
+    }
+    .accordion-header:hover {
+      background: rgba(34,197,94,0.08) !important;
+    }
+    .accordion-arrow {
+      display: inline-block;
+      font-size: 1.3em;
+      color: #22c55e;
+      transition: transform 0.3s;
+    }
+    .accordion-item.open .accordion-arrow {
+      transform: rotate(90deg);
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      background: none !important;
+      transition: max-height 0.35s cubic-bezier(.4,0,.2,1), padding 0.3s;
+      padding: 0 1.5rem;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    .accordion-item.open .accordion-body {
+      padding: 0.5rem 1.5rem 1.2rem 1.5rem;
+      max-height: 400px;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    .accordion-content {
+      color: #e0f2fe;
+      font-size: 1.08rem;
+      text-align: left;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    @media (max-width: 768px) {
+      .accordion-header {
+        font-size: 1.05rem;
+        padding: 1rem 1rem;
+      }
+      .accordion-body, .accordion-item.open .accordion-body {
+        padding: 0.5rem 1rem 1rem 1rem;
+      }
+    }
+    .accordion-list {
+      color: #e0f2fe;
+      margin: 0.5em 0 0.5em 0;
+      padding-left: 1.5em;
+      font-size: 1.04em;
+      list-style: disc inside;
+    }
+    .accordion-list li {
+      margin-bottom: 0.4em;
+      line-height: 1.5;
+    }
+    .accordion-icon {
+      font-size: 1.6em;
+      color: #22c55e;
+      margin-right: 0.7em;
+      vertical-align: middle;
+      flex-shrink: 0;
+      transition: color 0.2s;
+    }
+    .accordion-header:hover .accordion-icon {
+      color: #06b6d4;
+    }
+    @media (max-width: 768px) {
+      .accordion-icon {
+        font-size: 1.3em;
+        margin-right: 0.5em;
+      }
+    }
+    .icon-glow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 30% 20%, #183c2e 0%, #0a2233 100%);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 1.5px 0 rgba(34,197,94,0.08) inset;
+      margin-right: 0.7em;
+      flex-shrink: 0;
+      transition: box-shadow 0.2s, background 0.2s;
+    }
+    .accordion-header:hover .icon-glow {
+      box-shadow: 0 6px 24px rgba(6,182,212,0.18), 0 1.5px 0 rgba(34,197,94,0.12) inset;
+      background: radial-gradient(circle at 60% 40%, #14532d 0%, #0a2233 100%);
+    }
+    .icon-glow .material-icons, .icon-glow .accordion-icon {
+      font-size: 2rem;
+      color: #22c55e;
+      filter: drop-shadow(0 2px 8px #22c55e22);
+    }
+    .reveal {
+      color: #fff;
+    }
   </style>
 </head>
 <body class="min-h-screen font-sans">
@@ -551,59 +852,56 @@
     <button id="header-signup" class="btn-glow header-btn">Читать онлайн</button>
   </header>
   
-  <!-- Hero-блок -->
+  <!-- HERO-СЛАЙД -->
   <section class="reveal slide-bg-main-blue min-h-screen w-full flex flex-col justify-center items-center text-center px-4 py-8 relative overflow-visible">
-    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full">
-      <div class="floating-card hero-card text-center">
-        <div class="icon-glow hero-icon mx-auto mb-6">
-          <span class="material-icons">waving_hand</span>
-        </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg">
+    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full text-center">
+      <div class="floating-card hero-card text-center items-center">
+        <div class="icon-bg-hero mx-auto mb-6"><span class="material-icons">waving_hand</span></div>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg text-center">
           <span class="gradient-text">AI для тебя:</span><br>
           Гайд, который реально помогает
         </h1>
-        <p class="text-xl md:text-2xl text-white/90 mb-6 leading-relaxed">
+        <p class="text-xl md:text-2xl text-white/90 mb-6 leading-relaxed text-center">
           Простой, стильный и понятный гид, чтобы ты мог(ла) внедрить нейросети в свои повседневные задачи — без перегруза и без страха.
         </p>
         <button id="hero-guide-btn" class="btn-glow pulse-glow">
           📖 Читать онлайн
         </button>
       </div>
+      <!-- ТЕСТОВЫЙ ТЕКСТ -->
+      <div>Тестовый текст для проверки видимости на десктопе</div>
     </div>
-    
     <!-- Анимированная стрелка -->
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
       <svg class="down-arrow" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 12V36" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
-        <path d="M16 28L24 36L32 28" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M24 12V36" stroke="#22c55e" stroke-width="4" stroke-linecap="round"></path>
+        <path d="M16 28L24 36L32 28" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
     </div>
   </section>
   
   <!-- УТП: Почему тебе это нужно -->
-  <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col justify-center items-center text-center px-4 py-8">
-    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full">
-      <div class="floating-card text-center mb-8">
-        <div class="icon-glow mx-auto mb-6">
-          <span class="material-icons">lightbulb</span>
-        </div>
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+  <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col px-4 py-8">
+    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full text-center">
+      <div class="floating-card mb-8 text-center items-center">
+        <div class="icon-bg-hero mx-auto mb-6"><span class="material-icons">lightbulb</span></div>
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center">
           Ты всё ещё делаешь всё <span class="gradient-text">вручную</span>?
         </h2>
-        <p class="text-xl text-white/90 mb-6">Делегируй это ИИ. Гайд покажет — как, что и зачем.</p>
+        <p class="text-xl text-white/90 mb-6 text-center">Делегируй это ИИ. Гайд покажет — как, что и зачем.</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl justify-center">
         <div class="feature-item">
           <div class="feature-content">
-            <div class="feature-text">
-              <div class="feature-title">
+            <div class="feature-text text-left">
+              <div class="feature-title text-left">
                 <div class="icon-glow">
                   <span class="material-icons">vpn_key</span>
                 </div>
-                <h3 class="text-lg font-semibold text-white">Обзор разных инструментов</h3>
+                <h3 class="text-lg font-semibold text-white text-left">Обзор разных инструментов</h3>
               </div>
-              <p class="text-white/80">VPN не обязателен</p>
+              <p class="text-white/80 text-left">VPN не обязателен</p>
             </div>
           </div>
           <div class="mouse-glow"></div>
@@ -658,13 +956,11 @@
   </section>
   
   <!-- Что будет в гайде -->
-  <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col justify-center items-center text-center px-4 py-8">
-    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full">
-      <div class="floating-card text-center mb-8">
-        <div class="icon-glow mx-auto mb-6">
-          <span class="material-icons">list_alt</span>
-        </div>
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+  <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col px-4 py-8">
+    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full text-center">
+      <div class="floating-card mb-8 text-center items-center">
+        <div class="icon-bg-hero mx-auto mb-6"><span class="material-icons">list_alt</span></div>
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center">
           Что будет в <span class="gradient-text">гайде</span>?
         </h2>
       </div>
@@ -764,13 +1060,11 @@
   </section>
   
   <!-- Практика и примеры -->
-  <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col justify-center items-center text-center px-4 py-8">
-    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full">
-      <div class="floating-card text-center mb-8">
-        <div class="icon-glow mx-auto mb-6">
-          <span class="material-icons">build</span>
-        </div>
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+  <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col px-4 py-8">
+    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full text-center">
+      <div class="floating-card mb-8 text-center items-center">
+        <div class="icon-bg-hero mx-auto mb-6"><span class="material-icons">build</span></div>
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center">
           <span class="gradient-text">Практика</span> и примеры
         </h2>
       </div>
@@ -839,59 +1133,197 @@
     </div>
   </section>
   
-  <!-- О спикере -->
-  <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col justify-center items-center text-center px-4 py-8">
-    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full">
-      <div class="floating-card text-center">
-        <div class="icon-glow mx-auto mb-6">
-          <span class="material-icons">person</span>
+  <!-- СОВРЕМЕННЫЙ АККОРДЕОН: ВСЕ ПУНКТЫ -->
+  <section class="reveal slide-bg-soft w-full flex flex-col px-4 py-8">
+    <div class="slide-content flex flex-col items-center gap-8 max-w-5xl w-full text-center">
+      <div class="icon-bg-hero mx-auto ">
+        <span class="material-icons">menu_book</span>
+        
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-2 text-center">
+        Разделы <span class="gradient-text">гайда</span>
+      </h2>
+      <div class="accordion accordion-grid w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="icon-glow accordion-icon"><span class="material-icons">psychology</span></span>
+            <span>Что такое ИИ и зачем он тебе</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>ИИ — это искусственный интеллект, который помогает автоматизировать задачи, экономить время и находить новые решения. В этом разделе ты узнаешь, как ИИ может быть полезен именно тебе.</p>
+              <ul class="accordion-list">
+                <li>Что такое ИИ и зачем он тебе</li>
+                <li>Как ИИ может помочь в твоей жизни</li>
+                <li>Основные преимущества использования ИИ</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="icon-glow accordion-icon"><span class="material-icons">task_alt</span></span>
+            <span>ТОП-10 задач, которые можно делегировать</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Делегирование задач — это мощный инструмент для повышения эффективности и освобождения времени. Вот 10 задач, которые можно переложить на ИИ:</p>
+              <ul class="accordion-list">
+                <li>Генерация текстов и контента</li>
+                <li>Анализ данных и отчетов</li>
+                <li>Создание изображений и графиков</li>
+                <li>Переводы и локализация</li>
+                <li>Резюме и письма</li>
+                <li>Идеи для проектов и бизнеса</li>
+                <li>Обработка таблиц и данных</li>
+                <li>Составление планов и сценариев</li>
+                <li>Обработка аудио/видео</li>
+                <li>Поиск информации и исследование</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="icon-glow accordion-icon"><span class="material-icons">functions</span></span>
+            <span>Формула сильного запроса (промпта)</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Сильный промпт = <b>Роль</b> + <b>Контекст</b> + <b>Задача</b> + <b>Ограничения</b> + <b>Формат ответа</b>. Чем подробнее и конкретнее — тем лучше результат!</p>
+              <ul class="accordion-list">
+                <li>Роль: Определите, кто будет выполнять задачу (например, "редактор", "исследователь", "дизайнер").</li>
+                <li>Контекст: Укажите, что именно нужно сделать, используя предыдущие шаги или контекст.</li>
+                <li>Задача: Опишите конкретную цель, которую вы хотите достичь.</li>
+                <li>Ограничения: Укажите любые ограничения или условия, которые должны быть соблюдены.</li>
+                <li>Формат ответа: Определите, в каком формате должен быть ответ (текст, список, таблица, изображение).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="icon-glow accordion-icon"><span class="material-icons">content_copy</span></span>
+            <span>Готовые примеры промптов (копируемые)</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Готовые промпты — это отличный способ начать работу с ИИ. Вот несколько примеров:</p>
+              <ul class="accordion-list">
+                <li>"Сделай краткое резюме этого текста..."</li>
+                <li>"Придумай 5 идей для поста о..."</li>
+                <li>"Объясни простыми словами, что такое..."</li>
+                <li>"Составь план для..."</li>
+                <li>"Переведи на английский: ..."</li>
+                <li>"Напиши письмо на тему..."</li>
+                <li>"Создай изображение, которое..."</li>
+                <li>"Анализируй этот отчет и найди ключевые показатели."</li>
+                <li>"Обработай этот файл Excel и выведи..."</li>
+                <li>"Составь список задач на день..."</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="icon-glow accordion-icon"><span class="material-icons">timeline</span></span>
+            <span>Как внедрять ИИ по шагам, чтобы не перегореть</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Внедряй постепенно: выбери 1-2 задачи, автоматизируй их, оцени результат, только потом добавляй новые. Не пытайся охватить всё сразу!</p>
+              <ul class="accordion-list">
+                <li>Шаг 1: Выберите задачу, которую вы хотите автоматизировать.</li>
+                <li>Шаг 2: Найдите подходящий инструмент или сервис.</li>
+                <li>Шаг 3: Протестируйте результаты.</li>
+                <li>Шаг 4: Оцените эффективность.</li>
+                <li>Шаг 5: Если результат удовлетворительный, переходите к следующей задаче.</li>
+                <li>Шаг 6: Не забывайте регулярно обновлять инструменты и учиться новым навыкам.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="icon-glow accordion-icon"><span class="material-icons">error_outline</span></span>
+            <span>Главные ошибки новичков</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Новички часто допускают следующие ошибки при работе с ИИ:</p>
+              <ul class="accordion-list">
+                <li>Слишком общие запросы, которые не дают конкретного результата.</li>
+                <li>Ожидание идеального результата с первого раза, без учета возможных ограничений.</li>
+                <li>Игнорирование уточняющих вопросов и дополнительных инструкций.</li>
+                <li>Страх пробовать новое и экспериментировать.</li>
+                <li>Недостаточное понимание контекста и ограничений.</li>
+                <li>Неправильная формулировка запроса.</li>
+                <li>Отсутствие обратной связи и корректировки.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="icon-glow accordion-icon"><span class="material-icons">vpn_key</span></span>
+            <span>Инструменты без VPN</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Некоторые инструменты ИИ могут работать без VPN, но некоторые требуют его для обеспечения безопасности и доступа к сервисам.</p>
+              <ul class="accordion-list">
+                <li>YandexGPT: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
+                <li>Sber GigaChat: Требует VPN для доступа к полному функционалу.</li>
+                <li>Midjourney (через Telegram-ботов): Работает без VPN, но может быть ограничен доступ к некоторым моделям.</li>
+                <li>Canva AI: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
+                <li>Notion AI: Работает без VPN, но может быть ограничен доступ к некоторым функциям.</li>
+                <li>ChatPDF: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="icon-glow accordion-icon"><span class="material-icons">rocket_launch</span></span>
+            <span>Что дальше: мини-урок и курс</span>
+            <span class="accordion-arrow">&#9654;</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>После прочтения гайда и практики, вы можете перейти к мини-уроку или записаться на курс, чтобы прокачать навыки работы с ИИ и внедрить их в свою жизнь!</p>
+              <ul class="accordion-list">
+                <li>Мини-урок: Краткое, но полное введение в ИИ.</li>
+                <li>Курс: Подробное обучение и практика на реальных проектах.</li>
+                <li>Дополнительные ресурсы: Книги, статьи, форумы, сообщества.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- О спикере -->
+  <section class="reveal slide-bg-soft min-h-screen w-full flex flex-col px-4 py-8">
+    <div class="slide-content flex flex-col items-center gap-8 max-w-6xl w-full text-center">
+      <div class="floating-card text-center items-center">
+        <div class="icon-bg-hero mx-auto "><span class="material-icons">person</span></div>
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center">
            <span class="gradient-text">О спикере</span>
         </h2>
-        <p class="text-xl text-white/90 mb-4">Я — Полина Трейден, эксперт по цифровым инструментам и популяризатор ИИ.</p>
-        <p class="text-white/80">Веду образовательные программы по ИИ и цифровой грамотности. Помогаю людям внедрять технологии в жизнь легко и с удовольствием.</p>
+        <p class="text-xl text-white/90 mb-4 text-center">Я — Полина Трейден, эксперт по цифровым инструментам и популяризатор ИИ.</p>
+        <p class="text-white/80 text-center">Веду образовательные программы по ИИ и цифровой грамотности. Помогаю людям внедрять технологии в жизнь легко и с удовольствием.</p>
       </div>
     </div>
   </section>
 
-  <script>
-    // Прокрутка к гайду по клику на кнопку в Hero-блоке
-    document.addEventListener('DOMContentLoaded', function() {
-      const heroBtn = document.getElementById('hero-guide-btn');
-      if (heroBtn) {
-        heroBtn.addEventListener('click', function() {
-          // На мобильных просто прокручиваем к нужной секции
-          if (window.innerWidth <= 768) {
-            const sections = document.querySelectorAll('.reveal');
-            if (sections[2]) {
-              sections[2].scrollIntoView({ behavior: 'smooth' });
-            }
-          } else {
-            // На ПК используем слайды
-            window.current = 2;
-            if (typeof window.showSlide === 'function') window.showSlide(window.current);
-          }
-        });
-      }
-      
-      // Прокрутка к последнему слайду по клику на кнопку в header
-      const btn = document.getElementById('header-signup');
-      if (btn) {
-        btn.addEventListener('click', function() {
-          if (window.innerWidth <= 768) {
-            const sections = document.querySelectorAll('.reveal');
-            if (sections.length > 0) {
-              sections[sections.length - 1].scrollIntoView({ behavior: 'smooth' });
-            }
-          } else {
-            window.current = document.querySelectorAll('.reveal').length - 1;
-            if (typeof window.showSlide === 'function') window.showSlide(window.current);
-          }
-        });
-      }
-    });
-  </script>
-  <script src="script.js"></script>
+  
 </body>
 </html> 
