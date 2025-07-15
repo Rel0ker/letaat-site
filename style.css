@@ -14,7 +14,7 @@ body {
 .reveal {
   min-height: 100vh !important;
   height: auto !important;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
@@ -112,6 +112,29 @@ body {
   background: linear-gradient(180deg, #22c55e 60%, #06b6d4 100%);
   height: 32px;
   box-shadow: 0 2px 8px #22c55e33;
+}
+.dots-container {
+  position: fixed;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 50;
+}
+.dot {
+  width: 10px;
+  height: 18px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.13);
+  transition: background 0.2s, height 0.2s;
+  cursor: pointer;
+}
+.dot.active {
+  background: #fff;
+  height: 64px;
+  box-shadow: 0 2px 8px #fff3;
 }
 html, body {
   overflow: auto !important;
@@ -415,4 +438,132 @@ body, #slide-bg-fade, .reveal {
     0 10px 30px rgba(0,0,0,0.3),
     inset 0 1px 0 rgba(255,255,255,0.3);
 }
-/* ... остальные стили ... */ 
+/* Стили для аккордеона */
+.accordion {
+  width: 100%;
+}
+.accordion-item {
+  background: rgba(0,0,0,0.8);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border: none;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+.accordion-header {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  gap: 1rem;
+}
+.accordion-header:hover {
+  background: rgba(34,197,94,0.08);
+}
+.accordion-arrow {
+  display: inline-block;
+  font-size: 1.3em;
+  color: #22c55e;
+  transition: transform 0.3s;
+}
+.accordion-item.open .accordion-arrow {
+  transform: rotate(90deg);
+}
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  background: none;
+  transition: max-height 0.35s cubic-bezier(.4,0,.2,1), padding 0.3s;
+  padding: 0 1.5rem;
+  border: none;
+}
+.accordion-item.open .accordion-body {
+  padding: 0.5rem 1.5rem 1.2rem 1.5rem;
+  max-height: 400px;
+}
+.accordion-content {
+  color: #fff;
+  font-size: 1.08rem;
+  text-align: left;
+}
+.accordion-list {
+  color: #e0f2fe;
+  margin: 0.5em 0 0.5em 0;
+  padding-left: 1.5em;
+  font-size: 1.04em;
+  list-style: disc inside;
+}
+.accordion-list li {
+  margin-bottom: 0.4em;
+  line-height: 1.5;
+}
+.accordion-icon {
+  font-size: 1.6em;
+  color: #22c55e;
+  margin-right: 0.7em;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+.accordion-header:hover .accordion-icon {
+  color: #06b6d4;
+} 
+.accordion-header .icon-glow {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 12px;
+  flex-shrink: 0;
+} 
+.slide-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1300px;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+} 
+@media (max-width: 768px) {
+  .slide-content {
+    max-width: 100vw;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .accordion-grid {
+    display: block !important;
+  }
+  .accordion-item {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .accordion-header {
+    padding: 0.7rem 0.7rem;
+    font-size: 1rem;
+    gap: 0.7rem;
+  }
+  .accordion-header .icon-glow {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+  }
+  .accordion-header .material-icons {
+    font-size: 1.2rem;
+  }
+} 
