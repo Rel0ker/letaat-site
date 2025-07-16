@@ -11,6 +11,9 @@ body {
   margin: 0;
   padding: 0;
 }
+p h3 {
+    text-align: left;
+}
 .reveal {
   min-height: 100vh !important;
   height: auto !important;
@@ -141,7 +144,7 @@ html, body {
   height: auto !important;
 }
 body, #slide-bg-fade, .reveal {
-  background: #080b10 !important;
+  background: #171B1E !important;
   background-image: none !important;
 }
 .reveal {
@@ -395,7 +398,7 @@ body, #slide-bg-fade, .reveal {
 }
 .feature-title {
   display: flex;
-  align-items: center;
+  align-items: left;
   gap: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -509,14 +512,7 @@ body, #slide-bg-fade, .reveal {
   margin-bottom: 0.4em;
   line-height: 1.5;
 }
-.accordion-icon {
-  font-size: 1.6em;
-  color: #22c55e;
-  margin-right: 0.7em;
-  vertical-align: middle;
-  flex-shrink: 0;
-  transition: color 0.2s;
-}
+
 .accordion-header:hover .accordion-icon {
   color: #06b6d4;
 } 
@@ -534,7 +530,7 @@ body, #slide-bg-fade, .reveal {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1200px;
   box-sizing: border-box;
   padding-left: 1rem;
   padding-right: 1rem;
