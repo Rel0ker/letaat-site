@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ИИ как личный ассистент — мобильная версия</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../browser@4.js"></script>
+  <script src="../script.js"></script>
+  <!-- Подключение Flowbite -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="bg-[#202020] min-h-screen font-sans">
+  <div class="animated-bg"></div>
+  <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2" style="background: rgba(20, 30, 40, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <span class="text-white text-lg font-bold tracking-wide">AI для тебя</span>
+    <button id="header-signup" class="btn-glow header-btn">Читать онлайн</button>
+  </header>
+  <main style="padding-top:56px;">
+    <!-- HERO -->
+    <section class="reveal bg-[#202020] slide-bg-main-blue w-full flex flex-col items-center text-left px-2 py-6">
+      <div class="ai-floating-labels" id="ai-floating-labels"></div>
+      <div class="slide-content flex flex-col items-center gap-6 w-full text-center">
+        <div class="floating-card hero-card text-center items-center">
+          <div class="icon-bg-hero mx-auto mb-4"><span class="material-icons">waving_hand</span></div>
+          <h1 class="text-3xl font-extrabold text-white mb-2 drop-shadow-lg text-center">
+            <span class="gradient-text">AI человеческим языком:</span><br>
+            Гайд, который реально помогает
+          </h1>
+          <p class="text-lg text-white/90 mb-4 leading-relaxed text-center">
+            Простой, стильный и понятный гид, чтобы ты мог(ла) внедрить нейросети в свои повседневные задачи — без перегруза и без страха.
+          </p>
+          <button class="btn-glow pulse-glow w-full">📖 Читать онлайн</button>
+        </div>
+      </div>
+    </section>
+    <!-- УТП -->
+    <section class="reveal bg-[#10141b] slide-bg-soft w-full flex flex-col px-2 py-6">
+      <div class="slide-content flex flex-col items-center gap-6 w-full text-left">
+        <div class="floating-card mb-6 text-left items-center">
+          <div class="icon-bg-hero mx-auto mb-4"><span class="material-icons">lightbulb</span></div>
+          <h2 class="text-2xl font-bold text-white mb-2 text-left">Ты всё ещё делаешь всё <span class="gradient-text">вручную</span>?</h2>
+          <p class="text-lg text-white/90 mb-4 text-left">Делегируй это ИИ. Гайд покажет — как, что и зачем.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-4 w-full max-w-xl justify-center">
+          <div class="feature-item">
+            <div class="feature-content">
+              <div class="feature-text text-left">
+                <div class="feature-title text-left">
+                  <div class="icon-glow"><span class="material-icons">vpn_key</span></div>
+                  <h3 class="text-base font-semibold text-white text-left">Обзор разных инструментов</h3>
+                </div>
+                <p class="text-white/80 text-left">VPN не обязателен</p>
+              </div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-content">
+              <div class="feature-text text-left">
+                <div class="feature-title text-left">
+                  <div class="icon-glow"><span class="material-icons">language</span></div>
+                  <h3 class="text-base font-semibold text-white">Нужен только браузер</h3>
+                </div>
+                <p class="text-white/80">Никаких сложных установок</p>
+              </div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-content">
+              <div class="feature-text text-left">
+                <div class="feature-title text-left">
+                  <div class="icon-glow"><span class="material-icons">translate</span></div>
+                  <h3 class="text-base font-semibold text-white">Всё на русском</h3>
+                </div>
+                <p class="text-white/80">Понятно и доступно</p>
+              </div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-content">
+              <div class="feature-text text-left">
+                <div class="feature-title text-left">
+                  <div class="icon-glow"><span class="material-icons">schedule</span></div>
+                  <h3 class="text-base font-semibold text-white">Экономия времени</h3>
+                </div>
+                <p class="text-white/80">2–4 часа в день</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Что будет в гайде -->
+    <section class="reveal bg-[#10141b] slide-bg-soft w-full flex flex-col px-2 py-6 items-center justify-center">
+      <div class="slide-content flex flex-col items-center gap-6 w-full text-center">
+        <button class="btn-glow pulse-glow text-lg px-6 py-4 mt-8 w-full" onclick="window.location.href='guide-1.html'">К гайдам</button>
+      </div>
+    </section>
+    <!-- О спикере -->
+    <section class="reveal bg-[#10141b] slide-bg-soft w-full flex flex-col px-2 py-6">
+      <div class="slide-content flex flex-col items-center gap-6 max-w-xl w-full mx-auto">
+        <div class="flex-shrink-0 flex justify-center w-full">
+          <img src="../me.jpg" alt="Полина Трейден" class="w-[180px] rounded-2xl object-cover shadow-lg border border-green-400" />
+        </div>
+        <div class="flex flex-col items-center text-left gap-4 w-full">
+          <h2 class="text-xl font-bold text-white bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">Привет! Я — Полина Трейден</h2>
+          <div class="text-base text-white/80">22 года. Эксперт по нейросетям и делегированию задач ИИ.</div>
+          <p class="text-base text-white/90">Помогаю предпринимателям, управленцам и специалистам внедрять ИИ в свою работу без перегруза и страха.</p>
+          <ul class="grid grid-cols-1 gap-2 text-white text-sm">
+            <li class="border border-green-400 rounded-lg py-2 px-2 flex items-center gap-2">Старший специалист Яндекс Практикума по образовательной поддержке бэкенда</li>
+            <li class="border border-green-400 rounded-lg py-2 px-2 flex items-center gap-2">Преподаватель и методист</li>
+            <li class="border border-green-400 rounded-lg py-2 px-2 flex items-center gap-2">Автор курса «ИИ в помощь человеку»</li>
+            <li class="border border-green-400 rounded-lg py-2 px-2 flex items-center gap-2">Переводчик Гарвардского курса CS50</li>
+            <li class="border border-green-400 rounded-lg py-2 px-2 flex items-center gap-2">Веду Telegram-канал об ИИ, продуктивности и жизни — <a href="https://t.me/letaaTreiden" target="_blank" class="text-green-400 underline">@letaaTreiden</a></li>
+          </ul>
+          <div class="bg-gradient-to-r from-green-500/20 to-cyan-500/10 rounded-xl p-2 mt-2 shadow-md w-full">
+            <div class="text-base font-semibold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-1">Моя миссия:</div>
+            <div class="text-white/90 text-sm leading-relaxed">Показать, что ИИ — это не страшно, не сложно и не «только для айтишников».<br>Это помощник, который освобождает время и делает твою жизнь легче.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</body>
+</html> 
