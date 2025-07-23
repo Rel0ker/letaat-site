@@ -10,30 +10,115 @@
     <script src="../script.js"></script>
     <!-- Подключение Flowbite -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#202020] min-h-screen font-sans flex flex-col items-center justify-center">
-  <main class="w-full max-w-2xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
+<body class="bg-[var(--secondary-color)] min-h-screen font-sans flex flex-col items-center justify-center">
+  <main class="w-full max-w-4xl mx-auto px-6 py-8 flex flex-col items-center justify-center min-h-screen">
     <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">ТОП-10 задач, которые можно делегировать</h1>
     <div class="text-white/90 text-lg mb-8 text-left">
-      <p>Делегирование задач — это мощный инструмент для повышения эффективности и освобождения времени. Вот 10 задач, которые можно переложить на ИИ:</p>
-      <ul class="list-decimal pl-6 mt-4">
-        <li>Генерация текстов и контента</li>
-        <li>Анализ данных и отчетов</li>
-        <li>Создание изображений и графиков</li>
-        <li>Переводы и локализация</li>
-        <li>Резюме и письма</li>
-        <li>Идеи для проектов и бизнеса</li>
-        <li>Обработка таблиц и данных</li>
-        <li>Составление планов и сценариев</li>
-        <li>Обработка аудио/видео</li>
-        <li>Поиск информации и исследование</li>
-      </ul>
+      <blockquote class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left ">
+        <div class="grid grid-cols-1 gap-4 ">
+          <div class="p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Тексты:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">письма</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">описания</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">сценарии</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">посты</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">выступления</li>
+            </ul>
+          </div>
+          <div class="p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Идеи:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">темы для видео и постов</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">продукты</li>
+            </ul>
+          </div>
+          <div class="p-3 rounded-lg text-white/90 w-full">
+            <p class="font-bold">Структура:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">таблицы</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">планы</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">чек-листы</li>
+            </ul>
+          </div>
+          <div class="p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Визуал:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">обложки</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">карточки</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">баннеры</li>
+            </ul>
+          </div>
+          <div class="p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Быт:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">списки покупок</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">меню</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">маршруты</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">организация дел</li>
+            </ul>
+          </div>
+          <div class="p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Планирование:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">неделя</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">проект</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">запуск</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">событие</li>
+            </ul>
+          </div>
+          <div class=" p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Работа с клиентами:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">коммерческие предложения</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">инструкции</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">ответы в переписке</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">работа с негативом</li>
+            </ul>
+          </div>
+          <div class=" p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Подготовка к выступлению:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">сценарии</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">ответы на вопросы</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">план выступления</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">способы удержания внимания аудитории</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">подготовка к экзаменам</li>
+            </ul>
+          </div>
+          <div class=" p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Подарки:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">подбор по бюджету</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">по интересам</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">по полу</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">по возрасту</li>
+            </ul>
+          </div>
+          <div class=" p-3 rounded-lg text-white/90 w-full ">
+            <p class="font-bold">Обучение:</p>
+            <ul class="list-inside ml-2 flex flex-wrap gap-x-4 gap-y-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">подбор курсов</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">план изучения</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">объяснение сложного</li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
     </div>
     <div class="flex justify-between w-full max-w-md mx-auto gap-4">
-      <button class="btn-glow px-6 py-3" onclick="window.location.href='1.html'">Назад</button>
-      <button class="btn-glow px-6 py-3" onclick="window.location.href='3.html'">Дальше</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='1.html'">Назад</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='../index.html'">На главную</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='3.html'">Дальше</button>
     </div>
-    <button class="mt-8 underline text-green-400" onclick="window.location.href='../index.html'">На главную</button>
   </main>
+  <footer class="text-white/70 text-center text-sm py-6">
+    <p>© Полина Трейден, 2025</p>
+    <p>Гайд «AI для тебя» — интеллектуальная собственность автора.</p>
+    <p>Копирование, перепечатка и коммерческое использование материалов возможны только с письменного разрешения.</p>
+    <p>Основано на авторской системе внедрения ИИ в повседневные задачи.</p>
+  </footer>
 </body>
 </html>

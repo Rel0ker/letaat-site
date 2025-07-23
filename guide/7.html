@@ -11,25 +11,33 @@
   <!-- Подключение Flowbite -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
 </head>
-<body class="bg-[#202020] min-h-screen font-sans flex flex-col items-center justify-center">
+<body class="bg-[var(--secondary-color)] min-h-screen font-sans flex flex-col items-center justify-center">
   <main class="w-full max-w-2xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
     <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Инструменты без VPN</h1>
-    <div class="text-white/90 text-lg mb-8 text-left">
-      <p>Некоторые инструменты ИИ могут работать без VPN, но некоторые требуют его для обеспечения безопасности и доступа к сервисам.</p>
-      <ul class="list-disc pl-6 mt-4">
-        <li>YandexGPT: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
-        <li>Sber GigaChat: Требует VPN для доступа к полному функционалу.</li>
-        <li>Midjourney (через Telegram-ботов): Работает без VPN, но может быть ограничен доступ к некоторым моделям.</li>
-        <li>Canva AI: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
-        <li>Notion AI: Работает без VPN, но может быть ограничен доступ к некоторым функциям.</li>
-        <li>ChatPDF: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
-      </ul>
+    <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left ">
+      <div class="text-white/90 text-lg text-left p-4 rounded-md">
+        <p>Некоторые инструменты ИИ могут работать без VPN, но некоторые требуют его для обеспечения безопасности и доступа к сервисам.</p>
+        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">YandexGPT: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Sber GigaChat: Требует VPN для доступа к полному функционалу.</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Midjourney (через Telegram-ботов): Работает без VPN, но может быть ограничен доступ к некоторым моделям.</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Canva AI: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Notion AI: Работает без VPN, но может быть ограничен доступ к некоторым функциям.</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">ChatPDF: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
+        </ul>
+      </div>
     </div>
     <div class="flex justify-between w-full max-w-md mx-auto gap-4">
-      <button class="btn-glow px-6 py-3" onclick="window.location.href='6.html'">Назад</button>
-      <button class="btn-glow px-6 py-3" onclick="window.location.href='8.html'">Дальше</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='6.html'">Назад</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='../index.html'">На главную</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='8.html'">Дальше</button>
     </div>
-    <button class="mt-8 underline text-green-400" onclick="window.location.href='../index.html'">На главную</button>
-  </main>
+    </main>
+  <footer class="text-white/70 text-center text-sm py-6">
+    <p>© Полина Трейден, 2025</p>
+    <p>Гайд «AI для тебя» — интеллектуальная собственность автора.</p>
+    <p>Копирование, перепечатка и коммерческое использование материалов возможны только с письменного разрешения.</p>
+    <p>Основано на авторской системе внедрения ИИ в повседневные задачи.</p>
+  </footer>
 </body>
 </html>

@@ -10,23 +10,48 @@
   <script src="../script.js"></script>
   <!-- Подключение Flowbite -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#202020] min-h-screen font-sans flex flex-col items-center justify-center">
-  <main class="w-full max-w-2xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
+<body class="bg-[var(--secondary-color)] min-h-screen font-sans flex flex-col items-center justify-center">
+  <main class="w-full max-w-4xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
     <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Что такое ИИ и зачем он тебе</h1>
     <div class="text-white/90 text-lg mb-8 text-left">
-      <p>ИИ — это искусственный интеллект, который помогает автоматизировать задачи, экономить время и находить новые решения. В этом разделе ты узнаешь, как ИИ может быть полезен именно тебе.</p>
-      <ul class="list-disc pl-6 mt-4">
-        <li>Что такое ИИ и зачем он тебе</li>
-        <li>Как ИИ может помочь в твоей жизни</li>
-        <li>Основные преимущества использования ИИ</li>
-      </ul>
+       <blockquote class="bg-[var(--tertiary-color)] p-6 rounded-lg shadow-lg text-white/90 text-lg mb-4 text-left border-l-4 border-green-500 pl-4">
+         <p class="text-xl">ИИ — это как персональный помощник, только виртуальный. Он не заменит тебя, но может:</p>
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-4">
+           <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90 w-full">освободить 2–4 часа в день</span>
+           <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90 w-full">разгрузить голову</span>
+           <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90 w-full">упростить принятие решений</span>
+         </div>
+       </blockquote>
+       <div class="bg-[var(--tertiary-color)] p-6 rounded-lg shadow-lg text-white/90 text-lg mb-4 text-left">
+         <p class="text-xl">🧠 Что умеет ИИ:</p>
+         <ul class="list-disc pl-6 mt-4">
+           <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-4">
+             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Писать тексты: письма, посты, сценарии, резюме</span>
+             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Создавать визуал: обложки, карточки, иллюстрации</span>
+             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Структурировать: таблицы, списки, планы, схемы</span>
+             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Искать идеи: названия, подарки, темы для видео</span>
+             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Понимать и упрощать: объяснения, переводы, выжимки</span>
+           </div>
+         </ul>
+       </div>
+       <blockquote class="bg-[var(--tertiary-color)] p-6 rounded-lg shadow-lg text-white/90 text-lg mb-8 text-left border-l-4 border-green-500 pl-4">
+         <p>💬 GPT — это не магия. Это умный алгоритм, который работает только если ты чётко объясняешь задачу.</p>
+       </blockquote>
     </div>
     <div class="flex justify-between w-full max-w-md mx-auto gap-4">
-      <button class="btn-glow px-6 py-3 opacity-50 cursor-not-allowed" disabled>Назад</button>
-      <button class="btn-glow px-6 py-3" onclick="window.location.href='2.html'">Дальше</button>
+      <button class="btn-glow px-6 py-3 opacity-50 cursor-not-allowed rounded-full" disabled>Назад</button>
+      <button class=" btn-glow rounded-full" onclick="window.location.href='../index.html'">На главную</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='2.html'">Дальше</button>
     </div>
-    <button class="mt-8 underline text-green-400" onclick="window.location.href='../index.html'">На главную</button>
+    
   </main>
+  <footer class="text-white/70 text-center text-sm py-6">
+    <p>© Полина Трейден, 2025</p>
+    <p>Гайд «AI для тебя» — интеллектуальная собственность автора.</p>
+    <p>Копирование, перепечатка и коммерческое использование материалов возможны только с письменного разрешения.</p>
+    <p>Основано на авторской системе внедрения ИИ в повседневные задачи.</p>
+  </footer>
 </body>
 </html>

@@ -38,6 +38,7 @@
   --primary-color: #00FF99; /* Vibrant green for text and button */
   --secondary-color: #111313; /* Darker background color */
   --tertiary-color: #1A1A1A; /* Slightly lighter background for blocks */
+  --dark-accent-bg: #54dba30e; /* Darker accent background for specific blocks */
   --accent-color: #00C6FF; /* Blue for button glow */
 }
 
@@ -197,6 +198,15 @@
 }
 
 /* Specific styles for the header button */
+
+.task-item-glow {
+  transition: all 0.3s ease;
+}
+
+.task-item-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.6);
+}
 .header-btn {
   padding: 0.5rem 1rem;
   font-size: 0.875rem; /* text-sm */

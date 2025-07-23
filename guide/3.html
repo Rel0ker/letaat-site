@@ -11,24 +11,53 @@
   <!-- Подключение Flowbite -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
 </head>
-<body class="bg-[#202020] min-h-screen font-sans flex flex-col items-center justify-center">
-  <main class="w-full max-w-2xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
+<body class="bg-[var(--secondary-color)] min-h-screen font-sans flex flex-col items-center justify-center">
+  <main class="w-full max-w-4xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen ">
     <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Формула сильного запроса (промпта)</h1>
-    <div class="text-white/90 text-lg mb-8 text-left">
-      <p>Сильный промпт = <b>Роль</b> + <b>Контекст</b> + <b>Задача</b> + <b>Ограничения</b> + <b>Формат ответа</b>. Чем подробнее и конкретнее — тем лучше результат!</p>
-      <ul class="list-disc pl-6 mt-4">
-        <li>Роль: Определите, кто будет выполнять задачу (например, "редактор", "исследователь", "дизайнер").</li>
-        <li>Контекст: Укажите, что именно нужно сделать, используя предыдущие шаги или контекст.</li>
-        <li>Задача: Опишите конкретную цель, которую вы хотите достичь.</li>
-        <li>Ограничения: Укажите любые ограничения или условия, которые должны быть соблюдены.</li>
-        <li>Формат ответа: Определите, в каком формате должен быть ответ (текст, список, таблица, изображение).</li>
-      </ul>
+    <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left ">
+      <div class="text-white/90 text-lg mb-8 text-left p-4 rounded-md">
+        <p>Сильный промпт = <b>Роль</b> + <b>Контекст</b> + <b>Задача</b> + <b>Ограничения</b> + <b>Формат ответа</b>. Чем подробнее и конкретнее — тем лучше результат!</p>
+        <ul class="flex flex-wrap gap-x-4 mt-4">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Роль: Определите, кто будет выполнять задачу (например, "редактор", "исследователь", "дизайнер").</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Контекст: Укажите, что именно нужно сделать, используя предыдущие шаги или контекст.</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Задача: Опишите конкретную цель, которую вы хотите достичь.</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Ограничения: Укажите любые ограничения или условия, которые должны быть соблюдены.</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Формат ответа: Определите, в каком формате должен быть ответ (текст, список, таблица, изображение).</li>
+        </ul>
+      </div>
+      <div class="text-white/90 text-lg mb-8 text-left p-4 rounded-md">
+        <p><b>🔹 Примеры:</b></p>
+        <p class="mt-4">❌ Плохо:</p>
+        <ul class="flex flex-wrap gap-x-4 mt-2">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Напиши пост про ИИ</li>
+        </ul>
+        <p class="mt-4">✅ Хорошо:</p>
+        <ul class="flex flex-wrap gap-x-4 mt-2">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Ты — контент-маркетолог. Напиши Telegram-пост о том, как ИИ экономит 4 часа в день. Аудитория — предприниматели. Стиль — дружелюбный, но экспертный.</li>
+        </ul>
+      </div>
+
+      <div class="text-white/90 text-lg mb-8 text-left p-4 rounded-md">
+        <p><b>🧩 Подсказка: цепочка размышлений (Chain of Thought)</b></p>
+        <p class="mt-4">👉 Пример:</p>
+        <ul class="flex flex-wrap gap-x-4 mt-2">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Объясни, как работает нейросеть — шаг за шагом, с аналогиями из жизни. Например, сравни это с кухней или спортзалом.</li>
+        </ul>
+      </div>
     </div>
+
     <div class="flex justify-between w-full max-w-md mx-auto gap-4">
-      <button class="btn-glow px-6 py-3" onclick="window.location.href='2.html'">Назад</button>
-      <button class="btn-glow px-6 py-3" onclick="window.location.href='4.html'">Дальше</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='2.html'">Назад</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='../index.html'">На главную</button>
+      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='4.html'">Дальше</button>
     </div>
-    <button class="mt-8 underline text-green-400" onclick="window.location.href='../index.html'">На главную</button>
+  
   </main>
+  <footer class="text-white/70 text-center text-sm py-6">
+    <p>© Полина Трейден, 2025</p>
+    <p>Гайд «AI для тебя» — интеллектуальная собственность автора.</p>
+    <p>Копирование, перепечатка и коммерческое использование материалов возможны только с письменного разрешения.</p>
+    <p>Основано на авторской системе внедрения ИИ в повседневные задачи.</p>
+  </footer>
 </body>
 </html>
