@@ -12,3 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', revealOnScroll);
   revealOnScroll();
 });
+
