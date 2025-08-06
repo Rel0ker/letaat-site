@@ -13,14 +13,16 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[var(--secondary-color)] min-h-screen font-sans">
-  <!-- Мобильная версия (выпадающий список) - только для мобильных устройств -->
-  <div class="md:hidden w-full p-4 bg-[var(--secondary-color)] sticky top-0 z-20">
-    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
-      Навигация по гайдам
-      <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-      </svg>
-    </button>
+  <main class="flex flex-col md:flex-row min-h-screen">
+    <!-- Навигационное меню для гайдов -->
+    <!-- Мобильная версия (выпадающий список) - фиксированная при скролле -->
+    <div class="md:hidden w-full p-4 bg-[var(--secondary-color)] sticky top-0 z-20">
+      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
+        Навигация по гайдам
+        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>
     <!-- Dropdown menu -->
     <div id="dropdown" class="z-30 hidden bg-[var(--tertiary-color)] divide-y divide-gray-100 rounded-lg shadow w-full">
       <ul class="py-2 text-sm text-white/90" aria-labelledby="dropdownDefaultButton">
@@ -46,7 +48,7 @@
           <a href="/guide/7/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="7">7. Инструменты без VPN</a>
         </li>
         <li>
-          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Как превратить GPT в личного ассистента</a>
         </li>
       </ul>
       <!-- Быстрая навигация -->
@@ -59,8 +61,9 @@
       </div>
     </div>
   </div>
-  
-  <div class="flex flex-col md:flex-row">
+    
+    <!-- Десктопная версия (список слева) - фиксированная при скролле -->
+    <div class="flex flex-col md:flex-row">
     <!-- Десктопная версия (фиксированная колонка слева) - только для десктопа -->
     <div class="hidden md:block w-[350px] bg-[var(--tertiary-color)] p-4 rounded-lg shadow-md sticky top-4  overflow-y-auto self-start ml-4">
       <h3 class="text-lg font-medium mb-3 text-white/90">Навигация</h3>
@@ -87,7 +90,7 @@
           <a href="/guide/7/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="7">7. Инструменты без VPN</a>
         </li>
         <li>
-          <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+          <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Как превратить GPT в личного ассистента</a>
         </li>
       </ul>
       <!-- Быстрая навигация -->
@@ -101,83 +104,203 @@
       </div>
     </div>
     
-    <!-- Основной контент -->
-    <main class="w-full md:flex-1 p-4 flex flex-col items-center justify-center mx-auto max-w-7xl">
-        <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Формула сильного запроса (промпта)</h1>
-    <div class="bg-[var(--tertiary-color)] p-2 rounded-lg text-white/90 text-lg mb-4 text-left ">
-      <div class="text-white/90 text-lg mb-8 text-left p-4 rounded-md">
-        <p>Сильный промпт = <b>Роль</b> + <b>Контекст</b> + <b>Задача</b> + <b>Ограничения</b> + <b>Формат ответа</b>. Чем подробнее и конкретнее — тем лучше результат!</p>
-        <ul class="flex flex-wrap gap-x-4 mt-4">
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Роль: Определите, кто будет выполнять задачу (например, "редактор", "исследователь", "дизайнер").</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Контекст: Укажите, что именно нужно сделать, используя предыдущие шаги или контекст.</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Задача: Опишите конкретную цель, которую вы хотите достичь.</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Ограничения: Укажите любые ограничения или условия, которые должны быть соблюдены.</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md my-2">Формат ответа: Определите, в каком формате должен быть ответ (текст, список, таблица, изображение).</li>
-        </ul>
-      </div>
-      <div class="text-white/90 text-lg mb-8 text-left p-4 rounded-md">
-        <p><b>🔹 Примеры:</b></p>
-        <p class="mt-4">❌ Плохо:</p>
-        <ul class="flex flex-wrap gap-x-4 mt-2">
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Напиши пост про ИИ</li>
-        </ul>
-        <p class="mt-4">✅ Хорошо:</p>
-        <ul class="flex flex-wrap gap-x-4 mt-2">
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Ты — контент-маркетолог. Напиши Telegram-пост о том, как ИИ экономит 4 часа в день. Аудитория — предприниматели. Стиль — дружелюбный, но экспертный.</li>
-        </ul>
+    <!-- Контент справа -->
+    <div class="w-full max-w-7xl mx-auto md:flex-1 p-4 md:p-6 content-container">
+      <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Формула сильного промпта</h1>
+      
+      <!-- Введение -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-4">🎯 Ключ к успеху — правильный промпт</h2>
+        <p class="text-lg mb-4">Сильный промпт = <strong>Роль</strong> + <strong>Контекст</strong> + <strong>Задача</strong> + <strong>Ограничения</strong> + <strong>Формат ответа</strong></p>
+        <p class="text-lg">Чем подробнее и конкретнее ты объяснишь задачу — тем лучше результат!</p>
       </div>
 
-      <div class="text-white/90 text-lg mb-8 text-left p-4 rounded-md">
-        <p><b>🧩 Подсказка: цепочка размышлений (Chain of Thought)</b></p>
-        <p class="mt-4">👉 Пример:</p>
-        <ul class="flex flex-wrap gap-x-4 mt-2">
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Объясни, как работает нейросеть — шаг за шагом, с аналогиями из жизни. Например, сравни это с кухней или спортзалом.</li>
-        </ul>
-      </div>
-    </div>
+      <!-- Компоненты формулы -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">🧩 Компоненты сильного промпта</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">person</span>
+              <h3 class="text-xl font-semibold text-white">Роль</h3>
+            </div>
+            <p class="text-white/90 mb-3">Определи, кто будет выполнять задачу</p>
+            <div class="space-y-2 text-sm ">
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Редактор</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Исследователь</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Дизайнер</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Эксперт по теме</div>
+            </div>
+          </div>
 
-    
-    
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">info</span>
+              <h3 class="text-xl font-semibold text-white">Контекст</h3>
+            </div>
+            <p class="text-white/90 mb-3">Объясни ситуацию и фоновую информацию</p>
+            <div class="space-y-2 text-sm">
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Целевая аудитория</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Платформа</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Предыдущие шаги</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Ограничения</div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">task</span>
+              <h3 class="text-xl font-semibold text-white">Задача</h3>
+            </div>
+            <p class="text-white/90 mb-3">Опиши конкретную цель</p>
+            <div class="space-y-2 text-sm">
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Что нужно сделать</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Какой результат</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Зачем это нужно</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Критерии успеха</div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">format_list_bulleted</span>
+              <h3 class="text-xl font-semibold text-white">Формат</h3>
+            </div>
+            <p class="text-white/90 mb-3">Укажи желаемый формат ответа</p>
+            <div class="space-y-2 text-sm">
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Текст</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Список</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Таблица</div>
+              <div class="bg-[var(--tertiary-color)] p-2 rounded">Структура</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Примеры -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">💡 Примеры: плохо vs хорошо</h2>
+        
+        <div class="space-y-6">
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-white mb-4">📝 Написание поста</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-red-400 mb-2">❌ Плохо:</h4>
+                <p class="text-sm text-white/80">"Напиши пост про ИИ"</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-green-400 mb-2">✅ Хорошо:</h4>
+                <p class="text-sm text-white/80">"Ты — контент-маркетолог. Напиши Telegram-пост о том, как ИИ экономит 4 часа в день. Аудитория — предприниматели 25-35 лет. Стиль — дружелюбный, но экспертный. Длина — 2-3 абзаца. Добавь призыв к действию."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-white mb-4">🎨 Создание дизайна</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-red-400 mb-2">❌ Плохо:</h4>
+                <p class="text-sm text-white/80">"Сделай обложку"</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-green-400 mb-2">✅ Хорошо:</h4>
+                <p class="text-sm text-white/80">"Создай обложку для YouTube-видео о продуктивности. Размер 1280x720px. Стиль — минималистичный, современный. Цвета — синий и белый. Добавь иконку часов и текст 'Как сэкономить 4 часа в день'. Шрифт — четкий, читаемый."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-white mb-4">📊 Анализ данных</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold text-red-400 mb-2">❌ Плохо:</h4>
+                <p class="text-sm text-white/80">"Проанализируй данные"</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-green-400 mb-2">✅ Хорошо:</h4>
+                <p class="text-sm text-white/80">"Ты — аналитик данных. Проанализируй продажи за последний месяц. Найди топ-3 продукта, определи сезонные тренды, предложи стратегию роста. Представь результат в виде таблицы с ключевыми метриками."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Продвинутые техники -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">🚀 Продвинутые техники</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">psychology</span>
+              <h3 class="text-xl font-semibold text-white"> Chain of Thought</h3>
+            </div>
+            <p class="text-white/90 mb-3">Попроси ИИ объяснить ход мыслей</p>
+            <div class="bg-[var(--tertiary-color)] p-3 rounded text-sm">
+              <p class="text-white/90">"Объясни, как работает нейросеть — шаг за шагом, с аналогиями из жизни. Например, сравни это с кухней или спортзалом."</p>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">compare</span>
+              <h3 class="text-xl font-semibold text-white">Сравнение</h3>
+            </div>
+            <p class="text-white/90 mb-3">Попроси сравнить варианты</p>
+            <div class="bg-[var(--tertiary-color)] p-3 rounded text-sm">
+              <p class="text-white/90">"Сравни плюсы и минусы трех подходов к решению этой задачи. Представь в виде таблицы."</p>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">feedback</span>
+              <h3 class="text-xl font-semibold text-white"> Итерация</h3>
+            </div>
+            <p class="text-white/90 mb-3">Улучшай результат пошагово</p>
+            <div class="bg-[var(--tertiary-color)] p-3 rounded text-sm">
+              <p class="text-white/90">"Сделай это более конкретно", "Добавь больше деталей", "Сократи до 3 пунктов"</p>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">style</span>
+              <h3 class="text-xl font-semibold text-white"> Роль + стиль</h3>
+            </div>
+            <p class="text-white/90 mb-3">Укажи роль и стиль общения</p>
+            <div class="bg-[var(--tertiary-color)] p-3 rounded text-sm">
+              <p class="text-white/90">"Ты — опытный учитель. Объясни сложную тему простыми словами, как будто рассказываешь ребенку."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Чек-лист -->
+      
+
+      <!-- Готов к следующему шагу -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 cursor-pointer hover:bg-[var(--dark-accent-bg)] transition-all duration-300" onclick="window.location.href='../4'">
+        <h2 class="text-2xl font-semibold text-white mb-6">🚀 Готов к следующему шагу?</h2>
+        <p class="text-lg mb-4">Теперь ты знаешь формулу сильного промпта.</p>
+        <p class="text-lg mb-6">В следующем гайде ты получишь готовые шаблоны для самых популярных задач.</p>
+        
+        <div class="bg-[var(--dark-accent-bg)] p-4 rounded-lg">
+          <h3 class="font-semibold text-white mb-2">💬 Следующий гайд: Шаблоны сильных промптов</h3>
+          <p class="text-sm text-white/90">Готовые формулы для быстрого старта</p>
+          <div class="flex items-center justify-end mt-3">
+            <span class="text-[var(--primary-color)] font-semibold">Перейти к гайду 4</span>
+            <svg class="w-5 h-5 ml-2 text-[var(--primary-color)]" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+        </div>
+      </div>
     </div> <!-- Закрытие контейнера контента -->
     </div> <!-- Закрытие flex-контейнера -->
     
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Получаем текущий путь
-        const currentPath = window.location.pathname;
-        const currentGuide = currentPath.split('/')[2]; // Получаем номер текущего гайда
-        
-        // Находим все ссылки в навигационном меню
-        const guideLinks = document.querySelectorAll('.guide-link');
-        
-        // Проходим по всем ссылкам и подсвечиваем текущую
-        guideLinks.forEach(link => {
-          const guideNum = link.getAttribute('data-guide');
-          if (guideNum === currentGuide) {
-            // Подсвечиваем текущий гайд (менее ярко)
-            link.classList.add('bg-[var(--dark-accent-bg)]', 'font-medium');
-          }
-        });
-        
-        // Инициализация выпадающего списка для мобильной версии
-        const dropdownButton = document.getElementById('dropdownDefaultButton');
-        const dropdown = document.getElementById('dropdown');
-        
-        if (dropdownButton && dropdown) {
-          dropdownButton.addEventListener('click', function() {
-            dropdown.classList.toggle('hidden');
-          });
-          
-          // Закрытие выпадающего списка при клике вне его
-          document.addEventListener('click', function(event) {
-            if (!dropdownButton.contains(event.target) && !dropdown.contains(event.target)) {
-              dropdown.classList.add('hidden');
-            }
-          });
-        }
-      });
-    </script>
-  
   </main>
   <footer class="text-white/70 text-center text-sm py-6">
     <p>© Полина Трейден, 2025</p>
@@ -185,5 +308,42 @@
     <p>Копирование, перепечатка и коммерческое использование материалов возможны только с письменного разрешения.</p>
     <p>Основано на авторской системе внедрения ИИ в повседневные задачи.</p>
   </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Получаем текущий путь
+      const currentPath = window.location.pathname;
+      const currentGuide = currentPath.split('/')[2]; // Получаем номер текущего гайда
+      
+      // Находим все ссылки в навигационном меню
+      const guideLinks = document.querySelectorAll('.guide-link');
+      
+      // Проходим по всем ссылкам и подсвечиваем текущую
+      guideLinks.forEach(link => {
+        const guideNum = link.getAttribute('data-guide');
+        if (guideNum === currentGuide) {
+          // Подсвечиваем текущий гайд (менее ярко)
+          link.classList.add('bg-[var(--dark-accent-bg)]', 'font-medium');
+        }
+      });
+      
+      // Инициализация выпадающего списка для мобильной версии
+      const dropdownButton = document.getElementById('dropdownDefaultButton');
+      const dropdown = document.getElementById('dropdown');
+      
+      if (dropdownButton && dropdown) {
+        dropdownButton.addEventListener('click', function() {
+          dropdown.classList.toggle('hidden');
+        });
+        
+        // Закрытие выпадающего списка при клике вне его
+        document.addEventListener('click', function(event) {
+          if (!dropdownButton.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add('hidden');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

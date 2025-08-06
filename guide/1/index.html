@@ -13,14 +13,16 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[var(--secondary-color)] min-h-screen font-sans">
-  <!-- Мобильная версия (выпадающий список) - только для мобильных устройств -->
-  <div class="md:hidden w-full p-4 bg-[var(--secondary-color)] sticky top-0 z-20">
-    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
-      Навигация по гайдам
-      <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-      </svg>
-    </button>
+  <main class="flex flex-col md:flex-row min-h-screen">
+    <!-- Навигационное меню для гайдов -->
+    <!-- Мобильная версия (выпадающий список) - фиксированная при скролле -->
+    <div class="md:hidden w-full p-4 bg-[var(--secondary-color)] sticky top-0 z-20">
+      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
+        Навигация по гайдам
+        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>
     <!-- Dropdown menu -->
     <div id="dropdown" class="z-30 hidden bg-[var(--tertiary-color)] divide-y divide-gray-100 rounded-lg shadow w-full">
       <ul class="py-2 text-sm text-white/90" aria-labelledby="dropdownDefaultButton">
@@ -46,7 +48,7 @@
           <a href="/guide/7/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="7">7. Инструменты без VPN</a>
         </li>
         <li>
-          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Как превратить GPT в личного ассистента</a>
         </li>
       </ul>
       <!-- Быстрая навигация -->
@@ -86,7 +88,7 @@
           <a href="/guide/7/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="7">7. Инструменты без VPN</a>
         </li>
         <li>
-          <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+          <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Как превратить GPT в личного ассистента</a>
         </li>
       </ul>
       <div class="border-t border-gray-800 pt-4">
@@ -98,74 +100,173 @@
       </div>
     </div>
     
-    <!-- Основной контент -->
-    <main class="w-full md:flex-1 p-4 flex flex-col items-center justify-center min-h-screen">
-        <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Что такое ИИ и зачем он тебе</h1>
-    <div class="text-white/90 text-lg mb-8 text-left">
-       <blockquote class="bg-[var(--tertiary-color)] p-6 rounded-lg shadow-lg text-white/90 text-lg mb-4 text-left border-l-4 border-green-500 pl-4">
-         <p class="text-xl">ИИ — это как персональный помощник, только виртуальный. Он не заменит тебя, но может:</p>
-         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-4">
-           <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90 w-full">освободить 2–4 часа в день</span>
-           <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90 w-full">разгрузить голову</span>
-           <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90 w-full">упростить принятие решений</span>
-         </div>
-       </blockquote>
-       <div class="bg-[var(--tertiary-color)] p-6 rounded-lg shadow-lg text-white/90 text-lg mb-4 text-left">
-         <p class="text-xl">🧠 Что умеет ИИ:</p>
-         <ul class="list-disc pl-6 mt-4">
-           <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-4">
-             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Писать тексты: письма, посты, сценарии, резюме</span>
-             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Создавать визуал: обложки, карточки, иллюстрации</span>
-             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Структурировать: таблицы, списки, планы, схемы</span>
-             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Искать идеи: названия, подарки, темы для видео</span>
-             <span class="bg-[var(--dark-accent-bg)] p-3 rounded-lg shadow-md text-white/90">Понимать и упрощать: объяснения, переводы, выжимки</span>
-           </div>
-         </ul>
-       </div>
-       <blockquote class="bg-[var(--tertiary-color)] p-6 rounded-lg shadow-lg text-white/90 text-lg mb-8 text-left border-l-4 border-green-500 pl-4">
-         <p>💬 GPT — это не магия. Это умный алгоритм, который работает только если ты чётко объясняешь задачу.</p>
-       </blockquote>
-    </div>
+    <!-- Контент справа -->
+    <div class="w-full max-w-7xl mx-auto md:flex-1 p-4 md:p-6 content-container">
+      <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Что такое ИИ и зачем он тебе</h1>
+      
+      <!-- Введение -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-4">🤖 ИИ — это как персональный помощник, только виртуальный</h2>
+        <p class="text-lg mb-4">Он не заменит тебя, но может значительно облегчить твою работу и жизнь.</p>
+        <p class="text-lg">Представь, что у тебя есть умный ассистент, который работает 24/7 и готов помочь с любыми задачами.</p>
+      </div>
 
+      <!-- Что дает ИИ -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">🎯 Что тебе даст ИИ</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg text-center">
+            <div class="flex justify-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] text-4xl">schedule</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Освободить 2–4 часа в день</h3>
+            <p class="text-white/90">Автоматизируй рутинные задачи и сосредоточься на том, что действительно важно</p>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg text-center">
+            <div class="flex justify-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] text-4xl">psychology</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Разгрузить голову</h3>
+            <p class="text-white/90">Доверь ИИ обработку информации и освободи место для творчества</p>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg text-center">
+            <div class="flex justify-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] text-4xl">lightbulb</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Упростить принятие решений</h3>
+            <p class="text-white/90">Получи анализ вариантов и рекомендации для лучшего выбора</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Что умеет ИИ -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">🧠 Что умеет ИИ</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">edit</span>
+              <h3 class="text-xl font-semibold text-white">Писать тексты</h3>
+            </div>
+            <ul class="space-y-2 text-white/90">
+              <li>• Письма и сообщения</li>
+              <li>• Посты для соцсетей</li>
+              <li>• Сценарии и контент</li>
+              <li>• Резюме и документы</li>
+            </ul>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">image</span>
+              <h3 class="text-xl font-semibold text-white">Создавать визуал</h3>
+            </div>
+            <ul class="space-y-2 text-white/90">
+              <li>• Обложки и баннеры</li>
+              <li>• Карточки для постов</li>
+              <li>• Иллюстрации и схемы</li>
+              <li>• Логотипы и дизайн</li>
+            </ul>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">table_chart</span>
+              <h3 class="text-xl font-semibold text-white">Структурировать</h3>
+            </div>
+            <ul class="space-y-2 text-white/90">
+              <li>• Таблицы и списки</li>
+              <li>• Планы и графики</li>
+              <li>• Схемы и диаграммы</li>
+              <li>• Инструкции и чек-листы</li>
+            </ul>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">search</span>
+              <h3 class="text-xl font-semibold text-white">Искать идеи</h3>
+            </div>
+            <ul class="space-y-2 text-white/90">
+              <li>• Названия и заголовки</li>
+              <li>• Подарки и подарки</li>
+              <li>• Темы для видео</li>
+              <li>• Решения проблем</li>
+            </ul>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg md:col-span-2">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">translate</span>
+              <h3 class="text-xl font-semibold text-white">Понимать и упрощать</h3>
+            </div>
+            <ul class="space-y-2 text-white/90">
+              <li>• Объяснения сложных тем</li>
+              <li>• Переводы и адаптация</li>
+              <li>• Выжимки из длинных текстов</li>
+              <li>• Анализ и интерпретация данных</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Важное понимание -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">💡 Важное понимание</h2>
+        
+        <div class="space-y-6">
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-2xl">⚡</span>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-2">GPT — это не магия</h3>
+                <p class="text-white/90">Это умный алгоритм, который работает только если ты чётко объясняешь задачу. Качество результата зависит от качества твоего запроса.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-2xl">🎯</span>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-2">ИИ — это инструмент</h3>
+                <p class="text-white/90">Он не заменит твою экспертизу и креативность, но поможет работать быстрее и эффективнее. Ты остаешься главным в процессе.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-2xl">🔄</span>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-2">Нужна практика</h3>
+                <p class="text-white/90">Как и любой навык, работа с ИИ требует времени и экспериментов. Начни с простых задач и постепенно усложняй.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Готов к действию -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90">
+        <h2 class="text-2xl font-semibold text-white mb-6">🚀 Готов к действию?</h2>
+        <p class="text-lg mb-4">Теперь ты понимаешь, что ИИ — это мощный инструмент для повышения продуктивности.</p>
+        <p class="text-lg mb-6">В следующих гайдах ты узнаешь:</p>
+        
+        <div class=" gap-4">
+          <div class="bg-[var(--dark-accent-bg)] p-4 rounded-lg">
+            <h3 class="font-semibold text-white mb-2">📋 ТОП-10 задач для делегирования</h3>
+            <p class="text-sm text-white/90">Какие задачи лучше всего отдать ИИ</p>
+          </div>
+          
+        </div>
+      </div>
     </div> <!-- Закрытие контейнера контента -->
     </div> <!-- Закрытие flex-контейнера -->
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Получаем текущий путь
-        const currentPath = window.location.pathname;
-        const currentGuide = currentPath.split('/')[2]; // Получаем номер текущего гайда
-        
-        // Находим все ссылки в навигационном меню
-        const guideLinks = document.querySelectorAll('.guide-link');
-        
-        // Проходим по всем ссылкам и подсвечиваем текущую
-        guideLinks.forEach(link => {
-          const guideNum = link.getAttribute('data-guide');
-          if (guideNum === currentGuide) {
-            // Подсвечиваем текущий гайд (менее ярко)
-            link.classList.add('bg-[var(--dark-accent-bg)]', 'font-medium');
-          }
-        });
-        
-        // Инициализация выпадающего списка для мобильной версии
-        const dropdownButton = document.getElementById('dropdownDefaultButton');
-        const dropdown = document.getElementById('dropdown');
-        
-        if (dropdownButton && dropdown) {
-          dropdownButton.addEventListener('click', function() {
-            dropdown.classList.toggle('hidden');
-          });
-          
-          // Закрытие выпадающего списка при клике вне его
-          document.addEventListener('click', function(event) {
-            if (!dropdownButton.contains(event.target) && !dropdown.contains(event.target)) {
-              dropdown.classList.add('hidden');
-            }
-          });
-        }
-      });
-    </script>
     
   </main>
   <footer class="text-white/70 text-center text-sm py-6">
@@ -174,5 +275,42 @@
     <p>Копирование, перепечатка и коммерческое использование материалов возможны только с письменного разрешения.</p>
     <p>Основано на авторской системе внедрения ИИ в повседневные задачи.</p>
   </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Получаем текущий путь
+      const currentPath = window.location.pathname;
+      const currentGuide = currentPath.split('/')[2]; // Получаем номер текущего гайда
+      
+      // Находим все ссылки в навигационном меню
+      const guideLinks = document.querySelectorAll('.guide-link');
+      
+      // Проходим по всем ссылкам и подсвечиваем текущую
+      guideLinks.forEach(link => {
+        const guideNum = link.getAttribute('data-guide');
+        if (guideNum === currentGuide) {
+          // Подсвечиваем текущий гайд (менее ярко)
+          link.classList.add('bg-[var(--dark-accent-bg)]', 'font-medium');
+        }
+      });
+      
+      // Инициализация выпадающего списка для мобильной версии
+      const dropdownButton = document.getElementById('dropdownDefaultButton');
+      const dropdown = document.getElementById('dropdown');
+      
+      if (dropdownButton && dropdown) {
+        dropdownButton.addEventListener('click', function() {
+          dropdown.classList.toggle('hidden');
+        });
+        
+        // Закрытие выпадающего списка при клике вне его
+        document.addEventListener('click', function(event) {
+          if (!dropdownButton.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add('hidden');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

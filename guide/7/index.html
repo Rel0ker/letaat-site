@@ -12,15 +12,17 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[var(--secondary-color)] min-h-screen font-sans flex flex-col items-center justify-center">
-  <main class="w-full max-w-7xl mx-auto p min-h-screen">
-      <div class="md:hidden w-full p-4 bg-[var(--secondary-color)] sticky top-0 z-20">
-    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
-      Навигация по гайдам
-      <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-      </svg>
-    </button>
+<body class="bg-[var(--secondary-color)] min-h-screen font-sans">
+  <main class="flex flex-col md:flex-row min-h-screen">
+    <!-- Навигационное меню для гайдов -->
+    <!-- Мобильная версия (выпадающий список) - фиксированная при скролле -->
+    <div class="md:hidden w-full p-4 bg-[var(--secondary-color)] sticky top-0 z-20">
+      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
+        Навигация по гайдам
+        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>
     <!-- Dropdown menu -->
     <div id="dropdown" class="z-30 hidden bg-[var(--tertiary-color)] divide-y divide-gray-100 rounded-lg shadow w-full">
       <ul class="py-2 text-sm text-white/90" aria-labelledby="dropdownDefaultButton">
@@ -46,7 +48,7 @@
           <a href="/guide/7/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="7">7. Инструменты без VPN</a>
         </li>
         <li>
-          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Как превратить GPT в личного ассистента</a>
         </li>
       </ul>
       <!-- Быстрая навигация -->
@@ -59,9 +61,9 @@
       </div>
     </div>
   </div>
-      
-      <!-- Десктопная версия (список слева) - фиксированная при скролле -->
-      <div class="flex flex-col md:flex-row">
+    
+    <!-- Десктопная версия (список слева) - фиксированная при скролле -->
+    <div class="flex flex-col md:flex-row">
     <!-- Десктопная версия (фиксированная колонка слева) - только для десктопа -->
     <div class="hidden md:block w-[350px] bg-[var(--tertiary-color)] p-4 rounded-lg shadow-md sticky top-4  overflow-y-auto self-start ml-4">
       <h3 class="text-lg font-medium mb-3 text-white/90">Навигация</h3>
@@ -88,7 +90,7 @@
           <a href="/guide/7/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="7">7. Инструменты без VPN</a>
         </li>
         <li>
-          <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+          <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Как превратить GPT в личного ассистента</a>
         </li>
       </ul>
       <!-- Быстрая навигация -->
@@ -101,25 +103,267 @@
         </div>
       </div>
     </div>
+    
+    <!-- Контент справа -->
+    <div class="w-full max-w-7xl mx-auto md:flex-1 p-4 md:p-6 content-container">
+      <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Инструменты без VPN</h1>
       
-      <!-- Контент справа -->
-      <div class="w-full max-w-7xl mx-auto md:flex-1 p-4 md:p-6 content-container">
-        <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Инструменты без VPN</h1>
-        <div class="bg-[var(--tertiary-color)] p-2 rounded-lg text-white/90 text-lg mb-4 text-left ">
-          <div class="text-white/90 text-lg text-left p-4 rounded-md">
-            <p>Некоторые инструменты ИИ могут работать без VPN, но некоторые требуют его для обеспечения безопасности и доступа к сервисам.</p>
-            <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
-              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">YandexGPT: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
-              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Sber GigaChat: Требует VPN для доступа к полному функционалу.</li>
-              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Midjourney (через Telegram-ботов): Работает без VPN, но может быть ограничен доступ к некоторым моделям.</li>
-              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Canva AI: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
-              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Notion AI: Работает без VPN, но может быть ограничен доступ к некоторым функциям.</li>
-              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">ChatPDF: Работает без VPN, но может иметь ограничения по доступу к некоторым функциям.</li>
+      <!-- Введение -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-4">🌐 Что нужно знать о VPN</h2>
+        <p class="text-lg mb-4">Некоторые инструменты ИИ могут работать без VPN, но некоторые требуют его для обеспечения безопасности и доступа к сервисам.</p>
+        <p class="text-lg">Не переживай — большинство популярных инструментов доступны и без VPN!</p>
+      </div>
+
+      <!-- Категории инструментов -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">🚀 Доступные инструменты без VPN</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Текстовые ИИ -->
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">chat</span>
+              <h3 class="text-xl font-semibold text-white">Текстовые ИИ</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">YandexGPT</h4>
+                  <p class="text-sm text-white/80">Работает без VPN, но может иметь ограничения по доступу к некоторым функциям</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">GigaChat</h4>
+                  <p class="text-sm text-white/80">Требует VPN для доступа к полному функционалу</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">Claude (через прокси)</h4>
+                  <p class="text-sm text-white/80">Доступен через специальные сервисы</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Визуальные ИИ -->
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">image</span>
+              <h3 class="text-xl font-semibold text-white">Визуальные ИИ</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">Midjourney (боты)</h4>
+                  <p class="text-sm text-white/80">Работает через Telegram-ботов без VPN</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">Canva AI</h4>
+                  <p class="text-sm text-white/80">Работает без VPN, ограниченный функционал</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">Leonardo.ai</h4>
+                  <p class="text-sm text-white/80">Доступен через специальные сервисы</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Продуктивность -->
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">work</span>
+              <h3 class="text-xl font-semibold text-white">Продуктивность</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">Notion AI</h4>
+                  <p class="text-sm text-white/80">Работает без VPN, ограниченный доступ</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">ChatPDF</h4>
+                  <p class="text-sm text-white/80">Работает без VPN, ограниченный функционал</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">Grammarly</h4>
+                  <p class="text-sm text-white/80">Полностью доступен без VPN</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Аналитика -->
+          <div class="bg-[var(--dark-accent-bg)] p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-[var(--primary-color)] mr-3 text-2xl">analytics</span>
+              <h3 class="text-xl font-semibold text-white">Аналитика</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">Perplexity</h4>
+                  <p class="text-sm text-white/80">Работает без VPN, отличный поисковик</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">You.com</h4>
+                  <p class="text-sm text-white/80">Доступен без VPN</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <span class="text-[var(--primary-color)] mr-2">✓</span>
+                <div>
+                  <h4 class="font-semibold text-white">Bing Chat</h4>
+                  <p class="text-sm text-white/80">Работает через Edge без VPN</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Альтернативы -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">🔄 Альтернативы популярным инструментам</h2>
+        
+        <div class="space-y-6">
+          <div class="bg-[var(--dark-accent-bg)] p-4 rounded-lg">
+            <h3 class="text-lg font-semibold text-white mb-3">Вместо ChatGPT:</h3>
+            <ul class="space-y-2 text-white/90">
+              <li>• <strong>YandexGPT</strong> — российский аналог</li>
+              <li>• <strong>GigaChat</strong> — от Сбера (требует VPN)</li>
+              <li>• <strong>Claude</strong> — через специальные сервисы</li>
+              <li>• <strong>Bing Chat</strong> — встроен в браузер Edge</li>
             </ul>
           </div>
-        </div> <!-- Закрытие контейнера контента -->
+
+          <div class="bg-[var(--dark-accent-bg)] p-4 rounded-lg">
+            <h3 class="text-lg font-semibold text-white mb-3">Вместо Midjourney:</h3>
+            <ul class="space-y-2 text-white/90">
+              <li>• <strong>Telegram-боты</strong> — для Midjourney</li>
+              <li>• <strong>Canva AI</strong> — простые изображения</li>
+              <li>• <strong>Leonardo.ai</strong> — через прокси</li>
+              <li>• <strong>Stable Diffusion</strong> — локальная установка</li>
+            </ul>
+          </div>
+
+          <div class="bg-[var(--dark-accent-bg)] p-4 rounded-lg">
+            <h3 class="text-lg font-semibold text-white mb-3">Вместо Notion AI:</h3>
+            <ul class="space-y-2 text-white/90">
+              <li>• <strong>Обычный Notion</strong> + внешние ИИ</li>
+              <li>• <strong>Obsidian</strong> + плагины ИИ</li>
+              <li>• <strong>Logseq</strong> + интеграции</li>
+              <li>• <strong>Roam Research</strong> + API</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Советы по использованию -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">💡 Советы по использованию</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-xl">🔍</span>
+              <div>
+                <h4 class="font-semibold text-white mb-2">Исследуй альтернативы</h4>
+                <p class="text-white/90">Не зацикливайся на одном инструменте. Попробуй несколько вариантов.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-xl">⚡</span>
+              <div>
+                <h4 class="font-semibold text-white mb-2">Используй прокси</h4>
+                <p class="text-white/90">Для доступа к заблокированным сервисам используй надежные прокси.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-xl">📱</span>
+              <div>
+                <h4 class="font-semibold text-white mb-2">Мобильные приложения</h4>
+                <p class="text-white/90">Некоторые ИИ лучше работают через мобильные приложения.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-xl">🔄</span>
+              <div>
+                <h4 class="font-semibold text-white mb-2">Комбинируй инструменты</h4>
+                <p class="text-white/90">Используй разные ИИ для разных задач — это даст лучший результат.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-xl">📊</span>
+              <div>
+                <h4 class="font-semibold text-white mb-2">Сравнивай результаты</h4>
+                <p class="text-white/90">Тестируй разные инструменты на одной задаче.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <span class="text-[var(--primary-color)] mr-3 text-xl">💾</span>
+              <div>
+                <h4 class="font-semibold text-white mb-2">Сохраняй промпты</h4>
+                <p class="text-white/90">Создай библиотеку работающих промптов для каждого инструмента.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Чек-лист -->
+      
+      <!-- Готов к следующему шагу -->
+      <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 cursor-pointer hover:bg-[var(--dark-accent-bg)] transition-all duration-300" onclick="window.location.href='../8'">
+        <h2 class="text-2xl font-semibold text-white mb-6">🚀 Готов к следующему шагу?</h2>
+        <p class="text-lg mb-4">Теперь ты знаешь, какие инструменты доступны без VPN.</p>
+        <p class="text-lg mb-6">В следующем гайде ты узнаешь, как превратить GPT в личного ассистента.</p>
+        
+        <div class="bg-[var(--dark-accent-bg)] p-4 rounded-lg">
+          <h3 class="font-semibold text-white mb-2">💬 Следующий гайд: Как превратить GPT в личного ассистента</h3>
+          <p class="text-sm text-white/90">Создание персонального ИИ-помощника</p>
+          <div class="flex items-center justify-end mt-3">
+            <span class="text-[var(--primary-color)] font-semibold">Перейти к гайду 8</span>
+            <svg class="w-5 h-5 ml-2 text-[var(--primary-color)]" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div> <!-- Закрытие контейнера контента -->
     </div> <!-- Закрытие flex-контейнера -->
-  
+    
   </main>
   <footer class="text-white/70 text-center text-sm py-6">
     <p>© Полина Трейден, 2025</p>
