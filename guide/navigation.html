@@ -1,0 +1,94 @@
+<!-- Навигационное меню для гайдов -->
+<div class="flex flex-col md:flex-row gap-6 w-full max-w-4xl mb-6">
+  <!-- Мобильная версия (выпадающий список) -->
+  <div class="md:hidden w-full">
+    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
+      Навигация по гайдам
+      <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+      </svg>
+    </button>
+    <!-- Dropdown menu -->
+    <div id="dropdown" class="z-10 hidden bg-[var(--tertiary-color)] divide-y divide-gray-100 rounded-lg shadow w-full">
+      <ul class="py-2 text-sm text-white/90" aria-labelledby="dropdownDefaultButton">
+        <li>
+          <a href="/guide/1/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="1">1. Что такое ИИ и зачем он тебе</a>
+        </li>
+        <li>
+          <a href="/guide/2/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="2">2. ТОП-10 задач для делегирования</a>
+        </li>
+        <li>
+          <a href="/guide/3/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="3">3. Формула сильного промпта</a>
+        </li>
+        <li>
+          <a href="/guide/4/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="4">4. Шаблоны сильных промптов</a>
+        </li>
+        <li>
+          <a href="/guide/5/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="5">5. Как внедрять ИИ по шагам</a>
+        </li>
+        <li>
+          <a href="/guide/6/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="6">6. Главные ошибки новичков</a>
+        </li>
+        <li>
+          <a href="/guide/7/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="7">7. Инструменты без VPN</a>
+        </li>
+        <li>
+          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Десктопная версия (список слева) -->
+  <div class="hidden md:block w-1/4 bg-[var(--tertiary-color)] p-4 rounded-lg shadow-md">
+    <h3 class="text-lg font-medium mb-3 text-white/90">Навигация</h3>
+    <ul class="space-y-2 text-white/80">
+      <li>
+        <a href="/guide/1/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="1">1. Что такое ИИ и зачем он тебе</a>
+      </li>
+      <li>
+        <a href="/guide/2/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="2">2. ТОП-10 задач для делегирования</a>
+      </li>
+      <li>
+        <a href="/guide/3/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="3">3. Формула сильного промпта</a>
+      </li>
+      <li>
+        <a href="/guide/4/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="4">4. Шаблоны сильных промптов</a>
+      </li>
+      <li>
+        <a href="/guide/5/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="5">5. Как внедрять ИИ по шагам</a>
+      </li>
+      <li>
+        <a href="/guide/6/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="6">6. Главные ошибки новичков</a>
+      </li>
+      <li>
+        <a href="/guide/7/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="7">7. Инструменты без VPN</a>
+      </li>
+      <li>
+        <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Контент справа (только для десктопа) -->
+  <div class="w-full md:w-3/4 content-container">
+    <!-- Здесь будет основной контент -->
+  </div>
+</div>
+
+<script>
+  // Скрипт для подсветки текущего гайда
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname;
+    const guideLinks = document.querySelectorAll('.guide-link');
+    
+    guideLinks.forEach(link => {
+      if (currentPath.includes(link.getAttribute('data-guide'))) {
+        // Для мобильной версии
+        link.classList.add('bg-[var(--primary-color)]', 'text-white');
+        // Для десктопной версии
+        link.classList.add('bg-[var(--primary-color)]', 'text-white', 'font-medium');
+      }
+    });
+  });
+</script>

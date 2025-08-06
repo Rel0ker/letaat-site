@@ -5,43 +5,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Готовые примеры промптов (копируемые) — Гайд 4</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?version=1">
   <script src="/browser@4.js"></script>
   <script src="/script.js"></script>
   <!-- Подключение Flowbite -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[var(--secondary-color)] min-h-screen font-sans flex flex-col items-center justify-center">
-  <main class="w-full max-w-4xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
-    <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Шаблоны сильных промптов</h1>
-    <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left ">
-      <div class="text-white/90 text-lg  text-left p-4 rounded-md">
-        <p><b class="text-xl">Психологическая помощь здесь и сейчас:</b> <br> Ты — опытный психолог, работающий в формате поддерживающего разговора без диагнозов, мягко, бережно и осознанно.</p>
-        <p>Твоя задача — помочь человеку почувствовать себя лучше здесь и сейчас, разобрав его состояние через 10 коротких, простых и очень точных вопросов.</p>
-        <p><b>📌 Условия:</b></p>
-        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md ">Не ставь диагнозов</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Не обесценивай чувства</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Говори на понятном, человечном языке</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Не предлагай «обратиться к специалисту» — твоя задача уже поддержать</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">В конце — дай 2–3 конкретных шага или фразы поддержки, которые реально облегчат состояние</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Если человек не знает, как ответить — предложи мягкую подсказку</li>
-        </ul>
-        <p><b >🧠 Вопросы должны покрывать:</b></p>
-        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">эмоциональный фон</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">ощущение контроля</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">тело и энергия</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">отношения с собой и другими</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">смыслы и поддержка</li>
-        </ul>
-        <p><b>🎯 Итог:</b></p>
-        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">мини-анализ текущего состояния</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">мягкий разбор: что может влиять</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">2–3 совета в духе «эмоциональной аптечки»</li>
-          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">при необходимости — фраза, с которой можно проснуться завтра и начать день чуть легче</li>
-        </ul></div></div>
+<body class="bg-[var(--secondary-color)] min-h-screen font-sans">
+  <main class="flex flex-col md:flex-row  w-full">
+
+    <div class="md:hidden w-full p-4 bg-[var(--secondary-color)] sticky top-0 z-20">
+    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
+      Навигация по гайдам
+      <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+      </svg>
+    </button>
+    <!-- Dropdown menu -->
+    <div id="dropdown" class="z-30 hidden bg-[var(--tertiary-color)] divide-y divide-gray-100 rounded-lg shadow w-full">
+      <ul class="py-2 text-sm text-white/90" aria-labelledby="dropdownDefaultButton">
+        <li>
+          <a href="/guide/1/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="1">1. Что такое ИИ и зачем он тебе</a>
+        </li>
+        <li>
+          <a href="/guide/2/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="2">2. ТОП-10 задач для делегирования</a>
+        </li>
+        <li>
+          <a href="/guide/3/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="3">3. Формула сильного промпта</a>
+        </li>
+        <li>
+          <a href="/guide/4/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="4">4. Шаблоны сильных промптов</a>
+        </li>
+        <li>
+          <a href="/guide/5/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="5">5. Как внедрять ИИ по шагам</a>
+        </li>
+        <li>
+          <a href="/guide/6/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="6">6. Главные ошибки новичков</a>
+        </li>
+        <li>
+          <a href="/guide/7/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="7">7. Инструменты без VPN</a>
+        </li>
+        <li>
+          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+        </li>
+      </ul>
+      <!-- Быстрая навигация -->
+      <div class="border-t border-gray-600 pt-3 mt-3">
+        <div class="flex justify-between px-4 py-2">
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='../3'">Назад</button>
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='/'">На главную</button>
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='../5'">Дальше</button>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+      <div class="flex flex-col md:flex-row">
+    <!-- Десктопная версия (фиксированная колонка слева) - только для десктопа -->
+    <div class="hidden md:block w-[350px] bg-[var(--tertiary-color)] p-4 rounded-lg shadow-md sticky top-4   self-start ml-4">
+      <h3 class="text-lg font-medium mb-3 text-white/90">Навигация</h3>
+      <ul class="space-y-2 text-white/80 mb-6">
+        <li>
+          <a href="/guide/1/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="1">1. Что такое ИИ и зачем он тебе</a>
+        </li>
+        <li>
+          <a href="/guide/2/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="2">2. ТОП-10 задач для делегирования</a>
+        </li>
+        <li>
+          <a href="/guide/3/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="3">3. Формула сильного промпта</a>
+        </li>
+        <li>
+          <a href="/guide/4/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="4">4. Шаблоны сильных промптов</a>
+        </li>
+        <li>
+          <a href="/guide/5/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="5">5. Как внедрять ИИ по шагам</a>
+        </li>
+        <li>
+          <a href="/guide/6/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="6">6. Главные ошибки новичков</a>
+        </li>
+        <li>
+          <a href="/guide/7/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="7">7. Инструменты без VPN</a>
+        </li>
+        <li>
+          <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+        </li>
+      </ul>
+      <!-- Быстрая навигация -->
+      <div class="border-t border-gray-800 pt-4">
+        <h4 class="text-sm font-medium mb-3 text-white/90">Быстрая навигация</h4>
+        <div class="flex justify-between w-full max-w-md mx-auto gap-4">
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='../3'">Назад</button>
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='/'">На главную</button>
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='../5'">Дальше</button>
+        </div>
+      </div>
+    </div>
+      
+      <div class="w-full md:flex-1 p-4 flex flex-col items-center justify-center mx-auto max-w-7xl">
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Шаблоны сильных промптов</h1>
+        <div class="bg-[var(--tertiary-color)] p-2 rounded-lg text-white/90 text-lg mb-4 text-left ">
+          <div class="text-white/90 text-lg  text-left p-4 rounded-md">
+            <p><b class="text-xl">Психологическая помощь здесь и сейчас:</b> <br> Ты — опытный психолог, работающий в формате поддерживающего разговора без диагнозов, мягко, бережно и осознанно.</p>
+            <p>Твоя задача — помочь человеку почувствовать себя лучше здесь и сейчас, разобрав его состояние через 10 коротких, простых и очень точных вопросов.</p>
+            <p><b>📌 Условия:</b></p>
+            <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md ">Не ставь диагнозов</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Не обесценивай чувства</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Говори на понятном, человечном языке</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Не предлагай «обратиться к специалисту» — твоя задача уже поддержать</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">В конце — дай 2–3 конкретных шага или фразы поддержки, которые реально облегчат состояние</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Если человек не знает, как ответить — предложи мягкую подсказку</li>
+            </ul>
+            <p><b >🧠 Вопросы должны покрывать:</b></p>
+            <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">эмоциональный фон</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">ощущение контроля</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">тело и энергия</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">отношения с собой и другими</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">смыслы и поддержка</li>
+            </ul>
+            <p><b>🎯 Итог:</b></p>
+            <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">мини-анализ текущего состояния</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">мягкий разбор: что может влиять</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">2–3 совета в духе «эмоциональной аптечки»</li>
+              <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">при необходимости — фраза, с которой можно проснуться завтра и начать день чуть легче</li>
+            </ul></div></div>
     <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left ">
       <div class="text-white/90 text-lg  text-left p-4 rounded-md"></div>
             <h2 class="text-2xl font-semibold text-white mb-4">Промпт для изучения нового:</h2>
@@ -55,7 +145,7 @@
             </ul>
             <p class="mt-4">Учти, что я [уровень подготовки, например, новичок, имею базовые знания, эксперт].</p>
 
-    </div></div>
+    </div>
     <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left ">
       <div class="text-white/90 text-lg  text-left p-4 rounded-md"></div>
             <h2 class="text-2xl font-semibold text-white mb-4 mt-8">Промпт: План дня с заботой и продуктивностью</h2>
@@ -79,12 +169,145 @@
             </ul>
             <h3 class="text-xl font-semibold text-white mb-2 mt-4">✦ Цель плана:</h3>
             <p class="mb-4">Например: сделать максимум без перегруза / чувствовать контроль и ясность / успеть 3 ключевые задачи</p>
-    </div></div>
-    <div class="flex justify-between w-full max-w-md mx-auto gap-4">
-      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='../3'">Назад</button>
-      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='/'">На главную</button>
-      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='../5'">Дальше</button>
+    
     </div>
+
+    <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left">
+      <div class="text-white/90 text-lg text-left p-4 rounded-md">
+        <h2 class="text-2xl font-semibold text-white mb-4">Промпт для перевода текста:</h2>
+        <p class="mb-4">Ты — профессиональный русскоязычный редактор и переводчик с 10+ лет опыта.</p>
+        <p class="mb-4">Помоги адаптировать следующий [английский] текст на естественный, выразительный и понятный русский язык, сохранив:</p>
+        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">стиль и тон оригинала (если не указан — уточни)</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">смысловую точность</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">эмоциональную и культурную уместность</li>
+        </ul>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">✦ Моя цель:</h3>
+        <p class="mb-4">[например: сделать текст продающим / сохранить научную строгость / адаптировать для Reels / сделать легко читаемым для широкой аудитории и т. д.]</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">✦ Аудитория:</h3>
+        <p class="mb-4">[например: начинающие специалисты, предприниматели, девушки 20–30 лет и т. д.]</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">✦ Вот текст для адаптации:</h3>
+        <p class="mb-4">[вставить сюда или прикрепить во вложении]</p>
+        <p class="mb-4">Сделай перевод в двух вариантах:</p>
+        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Нейтрально-литературный (точный, универсальный)</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Живой и адаптированный (как будто писал русский автор под мою ЦА)</li>
+        </ul>
+        <p class="mb-4">Если что-то непереводимо или требует локализации — предложи варианты и объясни выбор.</p>
+        <p class="mb-4">💡 Можно добавлять:</p>
+        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">"Сделай адаптацию в формате Telegram-поста / статьи / слайда"</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">"Сохрани структуру, выделения, подзаголовки"</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">"Не используй шаблонных клише и кальку" (с реальными примерами клише)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left">
+      <div class="text-white/90 text-lg text-left p-4 rounded-md">
+        <h2 class="text-2xl font-semibold text-white mb-4">Промпт для резюмирования:</h2>
+        <p class="mb-4">Ты — эксперт по информации и резюмированию, умеешь быстро вычленять суть.</p>
+        <p class="mb-4">Прочитай следующий текст и сделай лаконичное, точное и структурированное резюме.</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">🔹 Формат:</h3>
+        <p class="mb-4">список ключевых мыслей (до 5–7 пунктов) или абзац до 100 слов — выбери лучший.</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">🔹 Не переписывай всё подряд:</h3>
+        <p class="mb-4">Оставь только суть, главное, что нужно запомнить.</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">🔹 Если в тексте есть структура:</h3>
+        <p class="mb-4">(например, подзаголовки, шаги, советы) — сохрани её.</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">🔹 Если это статья/пост:</h3>
+        <p class="mb-4">сделай так, чтобы по твоему резюме человек понял всё за 30 секунд.</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">[вставить текст или прикрепить в файле]</h3>
+        <p class="mb-4">💡 Если нужно для определённой цели, добавь:</p>
+        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">"Резюме нужно для [учёбы / отчёта / презентации / Telegram-поста и т.д.]"</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">"Оставь только практичные идеи / сделай выводы / добавь тезисы"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left">
+      <div class="text-white/90 text-lg text-left p-4 rounded-md">
+        <h2 class="text-2xl font-semibold text-white mb-4">Промпт для принятия решений:</h2>
+        <p class="mb-4">Ты — стратегический коуч по мышлению и принятию решений.</p>
+        <p class="mb-4">Помоги мне принять взвешенное решение, опираясь на мои ценности и цели.</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">✦ Вводные:</h3>
+        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Варианты выбора: [Опиши 2–3 варианта]</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Ситуация: [Кратко опиши, в чём суть]</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Мои долгосрочные цели: [Что ты хочешь в будущем — например, «финансовая независимость», «влияние», «баланс», «успешный бизнес» и т.д.]</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Ценности: [Например: свобода, рост, спокойствие, масштаб, признание]</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Текущее состояние: [Например: устала, вдохновлена, в смятении]</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Риски/страхи: [Что пугает или сдерживает]</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Ограничения: [Например: деньги, время, энергия, ресурсы]</li>
+        </ul>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">✦ Что хочу получить от тебя:</h3>
+        <ul class="flex flex-wrap gap-x-4 gap-y-4 my-4">
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Помоги сравнить варианты и их последствия</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Подсвети, какой из вариантов лучше двигает меня к целям</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Спроси то, о чём я могла не подумать</li>
+          <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Дай совет, исходя из долгосрочной стратегии, а не сиюминутных эмоций</li>
+        </ul>
+        <p class="mb-4">💡 Если нужно, задай мне уточняющие вопросы, чтобы финальный ответ был максимально точным.</p>
+      </div>
+    </div>
+
+    <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left w-full">
+      <div class="text-white/90 text-lg text-left p-4 rounded-md">
+        <h2 class="text-2xl font-semibold text-white mb-4">Промпт для объяснения сложного:</h2>
+        <p class="mb-4">Ты — эксперт-преподаватель, умеющий объяснять сложные вещи простыми словами.</p>
+        <p class="mb-4">Помоги мне понять тему [вставь тему] так, чтобы даже человек без подготовки это понял.</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">Объясни тему:</h3>
+        <p class="mb-4">[вставь название темы]</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">Стиль:</h3>
+        <p class="mb-4">просто, кратко, метафорично (если уместно)</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">Объём:</h3>
+        <p class="mb-4">не больше 5–7 предложений</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">Уровень подготовки:</h3>
+        <p class="mb-4">[новичок / школьник / гуманитарий / предприниматель и т.д.]</p>
+        <h3 class="text-xl font-semibold text-white mb-2 mt-4">Формат:</h3>
+        <p class="mb-4">текст + если можно — сравнение или аналогия</p>
+        <p class="mb-4">Если тема слишком обширная, предложи с чего начать и что важно понять в первую очередь.</p>
+      </div>
+    </div>
+    
+
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Получаем текущий путь
+        const currentPath = window.location.pathname;
+        const currentGuide = currentPath.split('/')[2]; // Получаем номер текущего гайда
+        
+        // Находим все ссылки в навигационном меню
+        const guideLinks = document.querySelectorAll('.guide-link');
+        
+        // Проходим по всем ссылкам и подсвечиваем текущую
+        guideLinks.forEach(link => {
+          const guideNum = link.getAttribute('data-guide');
+          if (guideNum === currentGuide) {
+            // Подсвечиваем текущий гайд (менее ярко)
+            link.classList.add('bg-[var(--dark-accent-bg)]', 'font-medium');
+          }
+        });
+        
+        // Инициализация выпадающего списка для мобильной версии
+        const dropdownButton = document.getElementById('dropdownDefaultButton');
+        const dropdown = document.getElementById('dropdown');
+        
+        if (dropdownButton && dropdown) {
+          dropdownButton.addEventListener('click', function() {
+            dropdown.classList.toggle('hidden');
+          });
+          
+          // Закрытие выпадающего списка при клике вне его
+          document.addEventListener('click', function(event) {
+            if (!dropdownButton.contains(event.target) && !dropdown.contains(event.target)) {
+              dropdown.classList.add('hidden');
+            }
+          });
+        }
+      });
+    </script>
     
   </main>
   <footer class="text-white/70 text-center text-sm py-6">

@@ -5,16 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Как внедрять ИИ по шагам, чтобы не перегореть — Гайд 5</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?version=1">
   <script src="/browser@4.js"></script>
   <script src="/script.js"></script>
   <!-- Подключение Flowbite -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[var(--secondary-color)] min-h-screen font-sans flex flex-col items-center justify-center">
-  <main class="w-full max-w-4xl mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
-    <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Как внедрять ИИ по шагам, чтобы не перегореть</h1>
-    <div class="bg-[var(--tertiary-color)] p-6 rounded-lg text-white/90 text-lg mb-4 text-left ">
+<body class="bg-[var(--secondary-color)] min-h-screen font-sans">
+  <main class="flex flex-col md:flex-row min-h-screen">
+    <!-- Навигационное меню для гайдов -->
+    <!-- Мобильная версия (выпадающий список) - фиксированная при скролле -->
+    <div class="md:hidden w-full p-4 bg-[var(--secondary-color)] sticky top-0 z-20">
+      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="w-full bg-[var(--tertiary-color)] text-white/90 font-medium rounded-lg text-sm px-5 py-4 text-center inline-flex items-center justify-between" type="button">
+        Навигация по гайдам
+        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>
+    <!-- Dropdown menu -->
+    <div id="dropdown" class="z-30 hidden bg-[var(--tertiary-color)] divide-y divide-gray-100 rounded-lg shadow w-full">
+      <ul class="py-2 text-sm text-white/90" aria-labelledby="dropdownDefaultButton">
+        <li>
+          <a href="/guide/1/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="1">1. Что такое ИИ и зачем он тебе</a>
+        </li>
+        <li>
+          <a href="/guide/2/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="2">2. ТОП-10 задач для делегирования</a>
+        </li>
+        <li>
+          <a href="/guide/3/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="3">3. Формула сильного промпта</a>
+        </li>
+        <li>
+          <a href="/guide/4/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="4">4. Шаблоны сильных промптов</a>
+        </li>
+        <li>
+          <a href="/guide/5/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="5">5. Как внедрять ИИ по шагам</a>
+        </li>
+        <li>
+          <a href="/guide/6/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="6">6. Главные ошибки новичков</a>
+        </li>
+        <li>
+          <a href="/guide/7/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="7">7. Инструменты без VPN</a>
+        </li>
+        <li>
+          <a href="/guide/8/" class="block px-4 py-3 hover:bg-[var(--dark-accent-bg)] guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+        </li>
+      </ul>
+    
+    <div class="flex justify-between w-full max-w-md mx-auto gap-4 border-none p-2">
+      <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='../4'">Назад</button>
+      <button class=" bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='/'">На главную</button>
+      <button class=" bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='../6'">Дальше</button>
+    </div>
+  </div>
+  </div>
+    
+    <!-- Десктопная версия (список слева) - фиксированная при скролле -->
+    <div class="flex flex-col md:flex-row">
+    <!-- Десктопная версия (фиксированная колонка слева) - только для десктопа -->
+    <div class="hidden md:block w-[350px] bg-[var(--tertiary-color)] p-4 rounded-lg shadow-md sticky top-4  overflow-y-auto self-start ml-4">
+      <h3 class="text-lg font-medium mb-3 text-white/90">Навигация</h3>
+      <ul class="space-y-2 text-white/80">
+        <li>
+          <a href="/guide/1/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="1">1. Что такое ИИ и зачем он тебе</a>
+        </li>
+        <li>
+          <a href="/guide/2/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="2">2. ТОП-10 задач для делегирования</a>
+        </li>
+        <li>
+          <a href="/guide/3/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="3">3. Формула сильного промпта</a>
+        </li>
+        <li>
+          <a href="/guide/4/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="4">4. Шаблоны сильных промптов</a>
+        </li>
+        <li>
+          <a href="/guide/5/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="5">5. Как внедрять ИИ по шагам</a>
+        </li>
+        <li>
+          <a href="/guide/6/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="6">6. Главные ошибки новичков</a>
+        </li>
+        <li>
+          <a href="/guide/7/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="7">7. Инструменты без VPN</a>
+        </li>
+        <li>
+          <a href="/guide/8/" class="block py-2 px-3 rounded hover:bg-[var(--dark-accent-bg)] transition-colors guide-link" data-guide="8">8. Что дальше: мини-урок и курс</a>
+        </li>
+      </ul>
+      <div class="border-t border-gray-800 pt-4">
+        <h4 class="text-sm font-medium mb-3 text-white/90">Быстрая навигация</h4>
+        <div class="flex justify-between w-full max-w-md mx-auto gap-4">
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='../4'">Назад</button>
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='/'">На главную</button>
+          <button class="bg-green-800 text-white px-3 py-1.5 rounded-lg" onclick="window.location.href='../6'">Дальше</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Контент справа -->
+    <div class="w-full max-w-7xl mx-auto md:flex-1 p-4 md:p-6 content-container">
+      <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 text-center">Как внедрять ИИ по шагам, чтобы не перегореть</h1>
+    <div class="bg-[var(--tertiary-color)] p-2 rounded-lg text-white/90 text-lg mb-4 text-left ">
     <div class="text-white/90 text-lg  text-left p-4 rounded-md">
       <p>Как внедрять ИИ по шагам, чтобы не перегореть:
 Главное — не пытаться сразу всё и везде. Лучше по чуть-чуть, но каждый день.</p>
@@ -27,13 +117,47 @@
         <li class="bg-[var(--dark-accent-bg)] p-2 rounded-md">Автоматизация — шаблоны, агенты, связки</li>
       </ul>
       <p class="mt-4">🎯 Начни с той задачи, которую ты и так уже сегодня должна делать.</p>
-      <p class="mt-4">Шаги оставляем, после них вот эта инфа</p>
-    </div></div>
-    <div class="flex justify-between w-full max-w-md mx-auto gap-4">
-      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='../4'">Назад</button>
-      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='/'">На главную</button>
-      <button class="btn-glow px-6 py-3 rounded-full" onclick="window.location.href='../6'">Дальше</button>
+
     </div>
+    
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+         // Получаем текущий путь
+         const currentPath = window.location.pathname;
+         const currentGuide = currentPath.split('/')[2]; // Получаем номер текущего гайда
+         
+         // Находим все ссылки в навигационном меню
+         const guideLinks = document.querySelectorAll('.guide-link');
+         
+         // Проходим по всем ссылкам и подсвечиваем текущую
+         guideLinks.forEach(link => {
+           const guideNum = link.getAttribute('data-guide');
+           if (guideNum === currentGuide) {
+             // Подсвечиваем текущий гайд (менее ярко)
+             link.classList.add('bg-[var(--dark-accent-bg)]', 'font-medium');
+           }
+         });
+         
+         // Инициализация выпадающего списка для мобильной версии
+         const dropdownButton = document.getElementById('dropdownDefaultButton');
+         const dropdown = document.getElementById('dropdown');
+         
+         if (dropdownButton && dropdown) {
+           dropdownButton.addEventListener('click', function() {
+             dropdown.classList.toggle('hidden');
+           });
+           
+           // Закрытие выпадающего списка при клике вне его
+           document.addEventListener('click', function(event) {
+             if (!dropdownButton.contains(event.target) && !dropdown.contains(event.target)) {
+               dropdown.classList.add('hidden');
+             }
+           });
+         }
+       });
+     </script>
+    </div>
+
   </main>
   <footer class="text-white/70 text-center text-sm py-6">
     <p>© Полина Трейден, 2025</p>
